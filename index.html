@@ -1,0 +1,436 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="게임 클라이언트 개발자 정규연의 포트폴리오">
+<title>정규연 포트폴리오</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&family=JetBrains+Mono:wght@500;700&display=swap">
+<style>
+/* 레이아웃: 참고 사이트처럼 어두운 한 장 스크롤 + 주황 포인트. 히어로(문장+대표 화면) → 소개 → 프로젝트 → 개인 작업 → 일하는 방식 → 연락 */
+:root{
+  --bg:#141215; --bg2:#1c191d; --card:#221e23; --line:#353036;
+  --fg:#f3efe9; --dim:#a79f9a; --faint:#6f6869;
+  --accent:#ff6a1f; --accent-soft:#3a2216;
+  --sans:"Noto Sans KR","Apple SD Gothic Neo","Malgun Gothic",system-ui,sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,Consolas,monospace;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font-family:var(--sans);font-size:16px;line-height:1.65;margin:0}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--bg)}
+a{color:inherit}
+img{display:block;max-width:100%}
+.wrap{max-width:1180px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.mono{font-family:var(--mono);letter-spacing:.06em}
+h1,h2,h3{margin:0;text-wrap:balance;font-weight:900;letter-spacing:-.02em}
+p{margin:0}
+
+/* 상단 바 */
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+header .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:14px}
+.brand{font-weight:900;font-size:18px;text-decoration:none}
+nav{display:flex;gap:22px;flex-wrap:wrap}
+nav a{text-decoration:none;color:var(--dim);font-size:14px}
+nav a:hover,nav a:focus-visible{color:var(--fg)}
+@media (max-width:720px){nav{display:none}}
+
+/* 히어로 */
+.hero{padding-block:56px 48px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:44px;align-items:center}
+.who{display:flex;gap:12px;align-items:baseline;margin-bottom:22px}
+.who b{font-size:20px}
+.who span{color:var(--dim);font-size:14px}
+.hero h1{font-size:clamp(34px,5.2vw,58px);line-height:1.18}
+.hero h1 em{font-style:normal;color:var(--accent)}
+.hero .lead{color:var(--dim);margin-top:20px;max-width:30em}
+.cta{display:flex;gap:10px;flex-wrap:wrap;margin-top:28px}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:12px 18px;border-radius:6px;font-weight:700;font-size:14px;text-decoration:none;border:1px solid var(--line);background:var(--card)}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:#1a0d05}
+.btn:focus-visible,button:focus-visible,a:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.shot{position:relative;border-radius:10px;overflow:hidden;border:1px solid var(--line);background:#000;cursor:zoom-in}
+.shot img{width:100%;aspect-ratio:16/9;object-fit:cover}
+.shot .tag{position:absolute;top:10px;right:10px;font-size:12px;background:rgba(0,0,0,.6);padding:3px 8px;border-radius:4px;color:#ddd}
+.cap{margin-top:12px}
+.cap b{display:block}
+.cap span{color:var(--dim);font-size:13px}
+@media (max-width:860px){.hero{grid-template-columns:1fr;padding-block:36px}}
+
+/* 섹션 공통 */
+section{padding-block:72px;border-top:1px solid var(--line)}
+.eyebrow{color:var(--accent);font-size:13px;font-weight:700;margin-bottom:14px}
+.sec-title{font-size:clamp(26px,3.4vw,38px);line-height:1.3}
+.sec-lead{color:var(--dim);margin-top:12px;max-width:40em}
+
+/* 소개 */
+.about{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.3fr);gap:48px;margin-top:36px}
+.photo{aspect-ratio:3/4;border-radius:10px;border:1px dashed var(--line);display:grid;place-items:center;color:var(--faint);font-size:14px;background:var(--bg2);max-width:260px}
+.intro h3{font-size:26px;line-height:1.4}
+.intro h3 small{display:block;font-size:15px;color:var(--dim);font-weight:500;margin-bottom:6px}
+.intro p{color:var(--dim);margin-top:14px}
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:28px;margin-top:40px}
+.fact h4{margin:0 0 12px;font-size:14px;color:var(--dim);font-weight:700}
+.row{display:grid;grid-template-columns:86px minmax(0,1fr);gap:12px;padding-block:8px;border-top:1px solid var(--line);font-size:15px}
+.row .k{color:var(--faint);font-family:var(--mono);font-size:13px;padding-top:2px}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{font-size:13px;padding:3px 10px;border-radius:999px;background:var(--card);border:1px solid var(--line);color:var(--fg);white-space:nowrap}
+.chip.hot{border-color:var(--accent);color:var(--accent);background:var(--accent-soft)}
+.traits{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:44px}
+.trait{padding:22px;border-radius:10px;background:var(--bg2);border:1px solid var(--line)}
+.trait .mono{font-size:12px;color:var(--accent)}
+.trait h4{margin:8px 0 8px;font-size:19px}
+.trait p{color:var(--dim);font-size:14px}
+@media (max-width:860px){.about{grid-template-columns:1fr}.traits{grid-template-columns:1fr}}
+
+/* 프로젝트 */
+.proj{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:40px;margin-top:44px;align-items:start}
+.proj.flip{grid-template-columns:minmax(0,1fr) minmax(0,1.2fr)}
+.proj.flip .media{order:2}
+.meta{font-size:13px;color:var(--dim)}
+.proj h3{font-size:30px;margin-top:6px}
+.proj .sub{color:var(--dim);margin-top:4px;font-size:15px}
+.proj .body{margin-top:16px;color:var(--fg)}
+.proj .body p+p{margin-top:10px}
+.role{margin-top:18px;padding:14px 16px;border-radius:8px;background:var(--bg2);border:1px solid var(--line);font-size:14px}
+.role b{color:var(--accent);margin-right:8px}
+.nums{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-top:18px}
+.num{padding:12px;border-radius:8px;border:1px solid var(--line);background:var(--card)}
+.num b{display:block;font-family:var(--mono);font-size:22px;color:var(--accent);font-variant-numeric:tabular-nums}
+.num span{font-size:12px;color:var(--dim);line-height:1.4;display:block}
+.thumbs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:10px}
+.thumbs .shot img{aspect-ratio:16/10}
+.links{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+@media (max-width:860px){.proj,.proj.flip{grid-template-columns:1fr}.proj.flip .media{order:0}.nums{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+/* 드론 상세 카드 */
+.details{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:14px;margin-top:28px}
+.detail{padding:20px;border-radius:10px;background:var(--card);border:1px solid var(--line);display:flex;flex-direction:column;gap:8px}
+.detail .mono{font-size:12px;color:var(--faint)}
+.detail h4{margin:0;font-size:18px}
+.detail p{color:var(--dim);font-size:14px}
+.detail.mine{border-color:var(--accent)}
+.detail.mine .mono{color:var(--accent)}
+
+/* 작은 작업 */
+.grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:36px}
+.mini{border-radius:10px;background:var(--card);border:1px solid var(--line);overflow:hidden;display:flex;flex-direction:column}
+.mini .pic{background:var(--bg2);aspect-ratio:16/10;display:grid;place-items:center;overflow:hidden}
+.mini .pic img{width:100%;height:100%;object-fit:cover}
+.mini .pic.fit img{object-fit:contain;padding:12px}
+.mini .pic.pix img{image-rendering:pixelated;object-fit:contain}
+.mini .pic.type span{font-family:var(--mono);font-weight:700;font-size:26px;text-align:center;line-height:1.3;color:var(--fg)}
+.mini .pic.type small{font-size:12px;color:var(--accent);letter-spacing:.08em}
+.mini .pic.type{background:linear-gradient(135deg,var(--bg2),var(--accent-soft))}
+.mini .txt{padding:18px;display:flex;flex-direction:column;gap:6px}
+.mini h4{margin:0;font-size:17px}
+.mini p{color:var(--dim);font-size:14px}
+.mini .meta{font-size:12px}
+@media (max-width:860px){.grid3{grid-template-columns:1fr}}
+
+/* 일하는 방식 */
+.flow{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-top:36px;counter-reset:s}
+.step{padding:20px;border-radius:10px;border:1px solid var(--line);background:var(--bg2)}
+.step b{font-family:var(--mono);color:var(--accent);font-size:13px}
+.step h4{margin:6px 0;font-size:18px}
+.step p{color:var(--dim);font-size:14px}
+@media (max-width:860px){.flow{grid-template-columns:1fr 1fr}}
+@media (max-width:480px){.flow{grid-template-columns:1fr}}
+
+/* 연락 */
+.contact{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:40px;align-items:end}
+.clist{display:flex;flex-direction:column}
+.citem{display:flex;justify-content:space-between;gap:12px;padding-block:14px;border-top:1px solid var(--line);font-size:15px}
+.citem span{color:var(--dim)}
+.citem a,.citem em{font-style:normal;word-break:break-all;text-align:right}
+.citem em{color:var(--faint)}
+@media (max-width:860px){.contact{grid-template-columns:1fr}}
+footer{padding-block:28px;color:var(--faint);font-size:12px;border-top:1px solid var(--line)}
+
+/* 확대 보기 */
+dialog{border:0;padding:0;background:transparent;max-width:min(1400px,94vw)}
+dialog::backdrop{background:rgba(0,0,0,.82)}
+dialog img{border-radius:8px;max-height:86vh;width:auto;margin:0 auto}
+dialog p{color:#ddd;text-align:center;margin-top:10px;font-size:14px}
+dialog button{position:fixed;top:calc(16px + env(safe-area-inset-top,0px));right:calc(16px + env(safe-area-inset-right,0px));background:#222;color:#fff;border:1px solid #444;border-radius:6px;padding:8px 12px;font-size:14px;cursor:pointer}
+@media (prefers-reduced-motion:no-preference){.shot img{transition:transform .4s}.shot:hover img{transform:scale(1.03)}}
+</style>
+
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <a class="brand" href="#top">정규연</a>
+    <nav aria-label="페이지 목차">
+      <a href="#about">소개</a><a href="#projects">프로젝트</a><a href="#more">개인 작업</a><a href="#how">일하는 방식</a><a href="#contact">연락처</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <div class="wrap hero">
+    <div>
+      <div class="who"><b>정규연</b><span>게임 클라이언트 개발자</span></div>
+      <h1>끝까지 만들고.<br>직접 확인하고.<br><em>공개까지 합니다.</em></h1>
+      <p class="lead">Unreal C++과 Godot으로 게임 시스템을 짜고, 회귀 테스트와 실측 대조로 동작을 확인합니다. 만든 것은 웹 빌드와 개발일지로 공개합니다.</p>
+      <div class="cta">
+        <a class="btn primary" href="#projects">대표 프로젝트 보기 ↓</a>
+        <a class="btn" href="#contact">연락처</a>
+      </div>
+    </div>
+    <div>
+      <figure class="shot" data-zoom="img/drone_title.jpg" data-cap="드론 레이싱·미션 게임 타이틀 화면" tabindex="0" style="margin:0">
+        <img src="img/drone_title.jpg" alt="드론 레이싱·미션 게임 타이틀 화면">
+        <span class="tag">클릭하여 확대</span>
+      </figure>
+      <div class="cap"><b>드론 레이싱·미션 게임</b><span>졸업작품 · 팀 · Unreal Engine 5 C++</span></div>
+    </div>
+  </div>
+
+  <section id="about">
+    <div class="wrap">
+      <div class="eyebrow mono">ABOUT</div>
+      <h2 class="sec-title">구현을 맡고, 될 때까지 확인하는 사람</h2>
+      <div class="about">
+        <div class="photo">[증명사진]</div>
+        <div class="intro">
+          <h3><small>정규연 · Jeong Gyuyeon</small>게임 클라이언트 개발자입니다.</h3>
+          <p>졸업작품 드론 게임에서 프로그래밍·시스템·테스트를 맡았습니다. 혼자서는 덱빌딩 로그라이크를 끝까지 만들어 itch.io에 공개했고, 지금은 픽셀 오토배틀러를 만들며 과정을 유튜브에 올리고 있습니다.</p>
+          <p>친구들과 마인크래프트·발헤임 서버를 직접 열어 운영하면서, 같이 하는 게임은 끊기지 않고 함께 할 수 있는 환경까지 만들어야 재미있다는 걸 배웠습니다.</p>
+        </div>
+      </div>
+
+      <div class="facts">
+        <div class="fact">
+          <h4>학력 · 병역</h4>
+          <div class="row"><span class="k">졸업예정</span><span>한국폴리텍대학 서울정수캠퍼스 [학과]</span></div>
+          <div class="row"><span class="k">중퇴</span><span>서울과학기술대학교 [전공]</span></div>
+          <div class="row"><span class="k">졸업</span><span>서울 대진고등학교</span></div>
+          <div class="row"><span class="k">병역</span><span>군필</span></div>
+        </div>
+        <div class="fact">
+          <h4>기술</h4>
+          <div class="row"><span class="k">엔진</span><span class="chips"><span class="chip hot">Unreal Engine 5</span><span class="chip">블루프린트</span><span class="chip hot">Godot 4</span></span></div>
+          <div class="row"><span class="k">언어</span><span class="chips"><span class="chip hot">C++</span><span class="chip">GDScript</span><span class="chip">C#</span><span class="chip">Python</span></span></div>
+          <div class="row"><span class="k">협업</span><span class="chips"><span class="chip">Git · GitHub</span><span class="chip">Figma</span></span></div>
+          <div class="row"><span class="k">도구</span><span class="chips"><span class="chip">Blender</span><span class="chip">Claude</span><span class="chip">Codex</span></span></div>
+        </div>
+        <div class="fact">
+          <h4>프로젝트 이력</h4>
+          <div class="row"><span class="k">2026</span><span>드론 레이싱·미션 게임 · 졸업작품 · 팀</span></div>
+          <div class="row"><span class="k">2026</span><span>KATHARSIS · 심리공포 탈출 · Unreal</span></div>
+          <div class="row"><span class="k">2026</span><span>림 더 스파이어 · 덱빌딩 로그라이크 · 개인</span></div>
+          <div class="row"><span class="k">진행 중</span><span>림토체스 · 픽셀 오토배틀러 · 개인</span></div>
+          <div class="row"><span class="k">2025</span><span>질서와 혼돈 · AI 대전 카드 게임 · Unreal</span></div>
+        </div>
+      </div>
+
+      <div class="traits">
+        <div class="trait"><span class="mono">FINISH</span><h4>끝까지 만듭니다</h4><p>전투부터 저장까지 한 판이 완결되는 웹 빌드를 itch.io에 공개했습니다.</p></div>
+        <div class="trait"><span class="mono">VERIFY</span><h4>직접 확인합니다</h4><p>수정할 때마다 회귀 테스트와 연결 검사를 돌리고, 맵 수치를 기획서와 대조합니다.</p></div>
+        <div class="trait"><span class="mono">TOGETHER</span><h4>같이 하는 걸 만듭니다</h4><p>멀티 서버를 운영하며 음성 모드를 만들고, 다른 PC의 문제까지 좁혀 고쳤습니다.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <div class="wrap">
+      <div class="eyebrow mono">SELECTED PROJECTS</div>
+      <h2 class="sec-title">직접 짜고, 확인한 프로젝트</h2>
+      <p class="sec-lead">맡은 범위와 실제 화면을 함께 정리했습니다. 팀 프로젝트는 제가 한 일만 적었습니다.</p>
+
+      <!-- 드론 -->
+      <article class="proj">
+        <div class="media">
+          <figure class="shot" data-zoom="img/drone_alley.jpg" data-cap="도시 레이스 코스 · 컨테이너 골목 게이트" tabindex="0" style="margin:0"><img src="img/drone_alley.jpg" alt="컨테이너 골목을 지나는 레이스 게이트"><span class="tag">클릭하여 확대</span></figure>
+          <div class="thumbs">
+            <figure class="shot" data-zoom="img/drone_brief.jpg" data-cap="미션 브리핑 화면" tabindex="0" style="margin:0"><img src="img/drone_brief.jpg" alt="미션 브리핑 화면" loading="lazy"></figure>
+            <figure class="shot" data-zoom="img/drone_result.jpg" data-cap="미션 완료 결과 화면" tabindex="0" style="margin:0"><img src="img/drone_result.jpg" alt="미션 완료 결과 화면" loading="lazy"></figure>
+            <figure class="shot" data-zoom="img/drone_city.jpg" data-cap="개인 확장 · 시드로 만드는 랜덤 도시" tabindex="0" style="margin:0"><img src="img/drone_city.jpg" alt="절차적으로 생성한 도시" loading="lazy"></figure>
+          </div>
+        </div>
+        <div>
+          <div class="meta mono">대표 프로젝트 · 졸업작품 · 팀</div>
+          <h3>드론 레이싱 · 미션 게임</h3>
+          <p class="sub">Unreal Engine 5 · C++ · 블루프린트 · 2026</p>
+          <div class="body">
+            <p>훈련, 게이트 레이스, 물자 투하와 전투 미션을 드론으로 수행하는 게임입니다. 기획·레벨·UI/UX·모델링 담당 팀원과 함께 만들었습니다.</p>
+            <p>각속도 기반 비행 모델과 조작 보조, 데이터로 짜는 미션 시스템, 적 AI와 무기를 구현했고, 테스트를 맡아 수정할 때마다 기존 기능이 깨지지 않았는지 확인했습니다.</p>
+          </div>
+          <div class="role"><b>담당</b>프로그래밍 · 시스템 · 테스트</div>
+          <div class="nums">
+            <div class="num"><b>6</b><span>역할이 다른 기체</span></div>
+            <div class="num"><b>28</b><span>회귀 테스트 통과</span></div>
+            <div class="num"><b>15/15</b><span>맵 연결 검사</span></div>
+            <div class="num"><b>17</b><span>맵 실측 대조</span></div>
+          </div>
+        </div>
+      </article>
+      <div class="details">
+        <div class="detail"><span class="mono">FLIGHT</span><h4>실제 드론처럼 나는 비행</h4><p>스틱 입력을 목표 각속도로 바꾸고 추력·중력·항력을 매 프레임 적분합니다. FPV는 Acro·Horizon, 정찰·투하 기체는 속도·제동 보조를 고릅니다. 키보드·게임패드·RC 조종기를 지원합니다.</p></div>
+        <div class="detail"><span class="mono">MISSION</span><h4>데이터로 짜는 미션</h4><p>목표·필요 횟수·제한시간을 Data Asset으로 두고 Mission Director가 진행량을 평가합니다. 같은 처치 이벤트가 두 번 와도 한 번만 세고, 재출격해도 끝낸 목표는 유지됩니다.</p></div>
+        <div class="detail"><span class="mono">COMBAT · AI</span><h4>전투와 적 AI</h4><p>StateTree로 순찰·추적·수색·엄폐를 나누고, Smart Object 예약으로 엄폐 자리가 겹치지 않게 했습니다. 재밍 구역에서는 링크가 끊기고 광섬유 드론만 영향을 받지 않습니다.</p></div>
+        <div class="detail mine"><span class="mono">개인 확장</span><h4>시드 하나로 재현하는 랜덤 도시</h4><p>마스터 시드에서 도시·코스·날씨 시드를 나눠 서로의 난수를 건드리지 않게 했습니다. 건물은 HISM으로 묶고 생성을 여러 프레임에 나눠 멈춤을 줄였습니다.</p></div>
+        <div class="detail"><span class="mono">TEST · TEAM</span><h4>기획서와 구현을 같은 표로</h4><p>Figma 기획서를 구현 대조표로 바꿔 팀이 같은 화면을 보게 했습니다. 에디터를 화면 없이 띄워 미션 맵 17개의 배치와 수치를 뽑아 기획과 대조했습니다.</p></div>
+      </div>
+
+      <!-- 림 더 스파이어 -->
+      <article class="proj flip">
+        <div class="media">
+          <figure class="shot" data-zoom="img/spire.jpg" data-cap="림 더 스파이어 전투 화면" tabindex="0" style="margin:0"><img src="img/spire.jpg" alt="림 더 스파이어 전투 화면" loading="lazy"><span class="tag">클릭하여 확대</span></figure>
+        </div>
+        <div>
+          <div class="meta mono">개인 프로젝트 · 공개</div>
+          <h3>림 더 스파이어</h3>
+          <p class="sub">덱빌딩 로그라이크 · Godot 4 · 2026</p>
+          <div class="body">
+            <p>전투, 카드 강화, 보상, 원정 지도, 휴식과 이벤트, 저장까지 한 판이 완결되는 웹 빌드를 itch.io에 공개했습니다.</p>
+            <p>카드 수백 종을 데이터로 관리하고, 강화 뒤 효과가 겹치는 카드를 자동 테스트로 잡아 0건으로 유지했습니다. 플레이 피드백을 받아 화면 비율별 UI와 텍스트 길이에 흔들리지 않는 카드 레이아웃으로 고쳤습니다.</p>
+          </div>
+          <div class="links"><a class="btn primary" href="https://gyeonliz.itch.io/lim-the-spire" target="_blank" rel="noopener">itch.io에서 플레이 ↗</a></div>
+        </div>
+      </article>
+
+      <!-- KATHARSIS -->
+      <article class="proj">
+        <div class="media">
+          <figure class="shot" data-zoom="img/k_lobby.jpg" data-cap="KATHARSIS 타이틀 화면" tabindex="0" style="margin:0"><img src="img/k_lobby.jpg" alt="KATHARSIS 타이틀 화면" loading="lazy"><span class="tag">클릭하여 확대</span></figure>
+          <div class="thumbs">
+            <figure class="shot" data-zoom="img/k_computer.jpg" data-cap="단서가 있는 안내 데스크 컴퓨터" tabindex="0" style="margin:0"><img src="img/k_computer.jpg" alt="안내 데스크 컴퓨터" loading="lazy"></figure>
+            <figure class="shot" data-zoom="img/k_keypad.jpg" data-cap="판마다 바뀌는 비밀번호 키패드" tabindex="0" style="margin:0"><img src="img/k_keypad.jpg" alt="키패드 입력 화면" loading="lazy"></figure>
+            <figure class="shot" data-zoom="img/k_monster.jpg" data-cap="추격 몬스터" tabindex="0" style="margin:0"><img src="img/k_monster.jpg" alt="추격 몬스터" loading="lazy"></figure>
+          </div>
+        </div>
+        <div>
+          <div class="meta mono">팀 프로젝트 · 2026 6월 최종 시연본</div>
+          <h3>KATHARSIS</h3>
+          <p class="sub">정신병원 탈출 심리공포 · Unreal Engine 5 C++ · 기획명 Fractured</p>
+          <div class="body">
+            <p>상호작용, 인벤토리, 보관함, 저장, 설정 UI까지 C++ 클래스로 짰습니다. 퓨즈박스로 전력을 되살리고 키패드와 엘리베이터로 층을 옮기며, 모은 증거에 따라 노멀·트루 엔딩으로 갈립니다.</p>
+            <p>비밀번호는 레벨에 고정하지 않고 시작할 때 만듭니다. 방마다 시계 시각을 무작위로 정하고 그림 순서를 섞어, 공략을 외워도 다음 판에는 답이 바뀝니다.</p>
+          </div>
+          <div class="role"><b>담당</b>게임플레이 프로그래밍 · 2인 팀 (팀원: 기획 · 레벨 디자인 · 시네마틱)</div>
+          <div class="links"><a class="btn" href="https://github.com/gyeonliz/Fractured" target="_blank" rel="noopener">소스 코드 (GitHub) ↗</a></div>
+        </div>
+      </article>
+
+      <!-- 림토체스 -->
+      <article class="proj flip">
+        <div class="media">
+          <figure class="shot" data-zoom="img/limto.jpg" data-cap="림토체스 전투 화면" tabindex="0" style="margin:0"><img src="img/limto.jpg" alt="림토체스 좌우 대치 전투 화면" loading="lazy"><span class="tag">클릭하여 확대</span></figure>
+        </div>
+        <div>
+          <div class="meta mono">개인 프로젝트 · 진행 중 · 팬게임</div>
+          <h3>림토체스</h3>
+          <p class="sub">좌우 대치형 픽셀 오토배틀러 · Godot 4</p>
+          <div class="body">
+            <p>상점 구매, 배치, 자동 전투, 정산이 돌아가는 상태입니다. 롤토체스 시너지 구조를 조사해 원거리 비율, 역할 5종, 코스트 분배를 표로 검산하며 기물 58종을 짜고 있습니다.</p>
+            <p>AI가 낸 명단이 원작 무기와 맞지 않으면 다시 묻고 기준을 정합니다. 그 과정을 유튜브 쇼츠 개발일지로 연재합니다.</p>
+          </div>
+          <div class="links"><a class="btn" href="https://youtube.com/shorts/OKJFkKbpLTc" target="_blank" rel="noopener">개발일지 1편 ↗</a></div>
+        </div>
+      </article>
+
+      <!-- 질서와 혼돈 -->
+      <article class="proj">
+        <div class="media">
+          <figure class="shot" data-zoom="img/oc_play.jpg" data-cap="질서와 혼돈 플레이 화면" tabindex="0" style="margin:0"><img src="img/oc_play.jpg" alt="질서와 혼돈 플레이 화면" loading="lazy"><span class="tag">클릭하여 확대</span></figure>
+        </div>
+        <div>
+          <div class="meta mono">수업 프로젝트 · 2025 2학기</div>
+          <h3>질서와 혼돈</h3>
+          <p class="sub">AI 대전 카드 게임 · Unreal Engine 5</p>
+          <div class="body">
+            <p>카드마다 안전한 질서(앞면)와 위험한 혼돈(뒷면) 중 골라 쓰는 규칙입니다. AI는 손패 가중치 합에 대한 비율로 낼 카드를 고르고, 드로우 확률도 같은 방식으로 정합니다.</p>
+            <p>운명·함정·축복 카드 효과를 데이터 테이블로 관리해 기획한 30종을 모두 구현했습니다.</p>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section id="more">
+    <div class="wrap">
+      <div class="eyebrow mono">MORE WORK</div>
+      <h2 class="sec-title">작게 만들고, 같이 쓰는 것들</h2>
+      <div class="grid3">
+        <div class="mini">
+          <div class="pic pix"><img src="img/pet_walk.gif" alt="픽셀 미니펫 걷기 애니메이션" loading="lazy"></div>
+          <div class="txt"><span class="meta mono">C++ · Win32 · Direct2D</span><h4>데스크톱 펫 · 픽셀 버전</h4><p>바탕화면과 창 위를 걷고, 매달리고, 커피를 마시는 펫입니다. 동작 18종을 80도트 픽셀로 다시 만들고, 도트가 정수배로 또렷하게 그려지도록 렌더러를 고쳤습니다.</p></div>
+        </div>
+        <div class="mini">
+          <div class="pic type"><span>Valheim<br><small>BepInEx · Voice</small></span></div>
+          <div class="txt"><span class="meta mono">BepInEx · 전용 서버</span><h4>발헤임 음성 모드</h4><p>멀티플레이 중 음성 기능 모드를 만들고 전용 서버를 운영했습니다. 한 사람의 PC에서만 마이크가 안 되는 문제를 원인까지 좁혀 대응했습니다.</p></div>
+        </div>
+        <div class="mini">
+          <div class="pic type"><span>Minecraft<br><small>Forge 1.20.1 · Server</small></span></div>
+          <div class="txt"><span class="meta mono">Forge 1.20.1</span><h4>마인크래프트 모드팩 서버</h4><p>모드팩 서버를 구축해 클라이언트 묶음까지 배포하고, 경제 밸런스가 무너지면 상한값을 다시 시험하며 운영했습니다.</p></div>
+        </div>
+        <div class="mini">
+          <div class="pic"><img src="img/ar.jpg" alt="HealthAR 바코드 인식 화면" loading="lazy"></div>
+          <div class="txt"><span class="meta mono">Unity · 수업</span><h4>HealthAR</h4><p>음료 바코드를 인식해 카페인 같은 주의 표시를 띄우는 모바일 앱입니다.</p></div>
+        </div>
+        <div class="mini">
+          <div class="pic fit"><img src="img/sticker.png" alt="다람쥐 보급병 스티커" loading="lazy"></div>
+          <div class="txt"><span class="meta mono">일러스트 · 수업</span><h4>군대 동물 스티커</h4><p>다람쥐 보급병, 고양이 드론병 등 병과별 캐릭터 이모티콘 세트입니다.</p></div>
+        </div>
+        <div class="mini">
+          <div class="pic fit" style="background:#000"><img src="img/ci.png" alt="CI 공모전 로고 시안" loading="lazy"></div>
+          <div class="txt"><span class="meta mono">디자인 · 공모전</span><h4>CI 공모전 출품</h4><p>의정부시청소년재단 CI 공모전에 낸 로고 시안입니다.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="how">
+    <div class="wrap">
+      <div class="eyebrow mono">HOW I WORK</div>
+      <h2 class="sec-title">AI에 맡기고, 판단과 검증은 직접</h2>
+      <p class="sec-lead">무엇을 맡기고 무엇을 직접 확인할지 정하는 것이 개발자의 일이라고 생각합니다. 검토를 거치지 않은 결과는 실제 게임에 덮어쓰지 않습니다.</p>
+      <div class="flow">
+        <div class="step"><b>1</b><h4>나누기</h4><p>작업을 담당별로 쪼개 범위와 완료 기준을 정합니다.</p></div>
+        <div class="step"><b>2</b><h4>맡기기</h4><p>코드는 Claude, 조사·검토·원화는 Codex에 나눠 맡깁니다.</p></div>
+        <div class="step"><b>3</b><h4>검증하기</h4><p>독립 검토, 자동 테스트, 실제 실행 화면으로 확인합니다.</p></div>
+        <div class="step"><b>4</b><h4>합치기</h4><p>원본을 백업한 뒤 통과한 것만 반영합니다.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="wrap contact">
+      <div>
+        <div class="eyebrow mono">CONTACT</div>
+        <h2 class="sec-title">다음 게임을 같이 만들 팀을 찾습니다.</h2>
+        <p class="sec-lead">구현과 검증을 함께 책임지는 신입 클라이언트 개발자가 되겠습니다.</p>
+      </div>
+      <div class="clist">
+        <div class="citem"><span>이메일</span><em>[이메일 입력]</em></div>
+        <div class="citem"><span>GitHub</span><a href="https://github.com/gyeonliz" target="_blank" rel="noopener">github.com/gyeonliz ↗</a></div>
+        <div class="citem"><span>itch.io</span><a href="https://gyeonliz.itch.io/lim-the-spire" target="_blank" rel="noopener">gyeonliz.itch.io/lim-the-spire ↗</a></div>
+        <div class="citem"><span>개발일지</span><a href="https://youtube.com/shorts/OKJFkKbpLTc" target="_blank" rel="noopener">유튜브 쇼츠 ↗</a></div>
+      </div>
+    </div>
+  </section>
+</main>
+<footer><div class="wrap">© 2026 정규연 · 팀 프로젝트의 그래픽·레벨 자산은 각 담당 팀원의 작업입니다. 림토체스는 Project Moon「림버스 컴퍼니」의 비공식·비상업 팬게임입니다.</div></footer>
+
+<dialog id="zoom" aria-label="확대 보기">
+  <button type="button" id="zoomClose">닫기 ✕</button>
+  <img id="zoomImg" alt="">
+  <p id="zoomCap"></p>
+</dialog>
+<script>
+(function(){
+  var d=document.getElementById('zoom'),im=document.getElementById('zoomImg'),cap=document.getElementById('zoomCap');
+  function open(el){im.src=el.getAttribute('data-zoom');im.alt=el.getAttribute('data-cap')||'';cap.textContent=el.getAttribute('data-cap')||'';if(d.showModal)d.showModal();}
+  document.querySelectorAll('[data-zoom]').forEach(function(el){
+    el.addEventListener('click',function(){open(el)});
+    el.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();open(el)}});
+  });
+  document.getElementById('zoomClose').addEventListener('click',function(){d.close()});
+  d.addEventListener('click',function(e){if(e.target===d)d.close()});
+})();
+</script>
+
+</body>
+</html>
