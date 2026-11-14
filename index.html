@@ -65,7 +65,8 @@ section{padding-block:72px;border-top:1px solid var(--line)}
 
 /* 소개 */
 .about{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.3fr);gap:48px;margin-top:36px}
-.photo{aspect-ratio:3/4;border-radius:10px;border:1px dashed var(--line);display:grid;place-items:center;color:var(--faint);font-size:14px;background:var(--bg2);max-width:260px}
+.photo{aspect-ratio:3/4;border-radius:10px;border:1px dashed var(--line);display:grid;place-items:center;color:var(--faint);font-size:14px;background:var(--bg2);max-width:260px;overflow:hidden}
+.photo img{width:100%;height:100%;object-fit:cover;display:block}
 .intro h3{font-size:26px;line-height:1.4}
 .intro h3 small{display:block;font-size:15px;color:var(--dim);font-weight:500;margin-bottom:6px}
 .intro p{color:var(--dim);margin-top:14px}
@@ -96,12 +97,21 @@ section{padding-block:72px;border-top:1px solid var(--line)}
 .role b{color:var(--accent);margin-right:8px}
 .nums{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-top:18px}
 .num{padding:12px;border-radius:8px;border:1px solid var(--line);background:var(--card)}
-.num b{display:block;font-family:var(--mono);font-size:22px;color:var(--accent);font-variant-numeric:tabular-nums}
+.num{min-width:0}
+.num b{display:block;font-family:var(--mono);font-size:clamp(16px,1.7vw,22px);line-height:1.25;color:var(--accent);font-variant-numeric:tabular-nums;overflow-wrap:anywhere}
 .num span{font-size:12px;color:var(--dim);line-height:1.4;display:block}
 .thumbs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:10px}
 .thumbs .shot img{aspect-ratio:16/10}
 .links{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
 @media (max-width:860px){.proj,.proj.flip{grid-template-columns:1fr}.proj.flip .media{order:0}.nums{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+/* 텍스트 대표 패널(사진 없는 프로젝트) */
+.panel{border-radius:10px;border:1px solid var(--line);background:linear-gradient(135deg,var(--bg2),var(--accent-soft));padding:28px;display:flex;flex-direction:column;justify-content:space-between;gap:22px;aspect-ratio:16/10}
+.panel .mono{font-size:12px;color:var(--accent)}
+.panel h4{margin:6px 0 0;font-size:clamp(24px,3vw,34px);font-weight:900;line-height:1.2}
+.panel ol{margin:0;padding:0;list-style:none;display:grid;gap:8px;font-size:14px;color:var(--dim)}
+.panel li b{color:var(--fg);font-family:var(--mono);margin-right:8px}
+@media (max-width:860px){.panel{aspect-ratio:auto}}
 
 /* 드론 상세 카드 */
 .details{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:14px;margin-top:28px}
@@ -110,6 +120,12 @@ section{padding-block:72px;border-top:1px solid var(--line)}
 .detail h4{margin:0;font-size:18px}
 .detail p{color:var(--dim);font-size:14px}
 .detail.mine{border-color:var(--accent)}
+.sub-h{margin:48px 0 0;font-size:18px;color:var(--dim);font-weight:700}
+.sub-h + .details{margin-top:14px}
+.inc dl{margin:2px 0 0;display:grid;grid-template-columns:auto minmax(0,1fr);gap:6px 10px;font-size:14px}
+.inc dt{font-family:var(--mono);font-size:12px;color:var(--accent);padding-top:2px;white-space:nowrap}
+.inc dd{margin:0;color:var(--dim)}
+.detail code{font-family:var(--mono);font-size:13px;color:var(--fg);background:var(--bg2);padding:1px 5px;border-radius:4px}
 .detail.mine .mono{color:var(--accent)}
 
 /* 작은 작업 */
@@ -118,7 +134,7 @@ section{padding-block:72px;border-top:1px solid var(--line)}
 .mini .pic{background:var(--bg2);aspect-ratio:16/10;display:grid;place-items:center;overflow:hidden}
 .mini .pic img{width:100%;height:100%;object-fit:cover}
 .mini .pic.fit img{object-fit:contain;padding:12px}
-.mini .pic.pix img{image-rendering:pixelated;object-fit:contain}
+.mini .pic.pix img{image-rendering:pixelated;image-rendering:crisp-edges;object-fit:fill;width:auto;height:auto;max-width:none;max-height:none}
 .mini .pic.type span{font-family:var(--mono);font-weight:700;font-size:26px;text-align:center;line-height:1.3;color:var(--fg)}
 .mini .pic.type small{font-size:12px;color:var(--accent);letter-spacing:.08em}
 .mini .pic.type{background:linear-gradient(135deg,var(--bg2),var(--accent-soft))}
@@ -127,6 +143,23 @@ section{padding-block:72px;border-top:1px solid var(--line)}
 .mini p{color:var(--dim);font-size:14px}
 .mini .meta{font-size:12px}
 @media (max-width:860px){.grid3{grid-template-columns:1fr}}
+
+/* 영상 */
+.vlist{display:grid;gap:16px;margin-top:32px}
+.vrow{display:grid;grid-template-columns:minmax(0,320px) minmax(0,1fr);gap:24px;padding:18px;border-radius:10px;background:var(--card);border:1px solid var(--line)}
+.vthumb{position:relative;display:block;aspect-ratio:16/9;background:#000;border-radius:8px;overflow:hidden;align-self:start;border:1px solid var(--line)}
+.vthumb:hover{border-color:var(--accent)}
+.vthumb img{width:100%;height:100%;object-fit:cover;display:block}
+.vthumb i{position:absolute;inset:auto auto 10px 10px;font-style:normal;font-size:13px;background:rgba(0,0,0,.75);color:#fff;border-radius:4px;padding:2px 8px}
+.vtxt{display:flex;flex-direction:column;gap:4px;min-width:0}
+.vtxt .meta{font-size:12px}
+.vtxt h4{margin:2px 0 2px;font-size:19px}
+.vtxt .vd{color:var(--fg);font-size:15px}
+.learn{display:grid;grid-template-columns:auto minmax(0,1fr);gap:8px 16px;margin:10px 0 0;font-size:14px;line-height:1.65}
+.learn dt{color:var(--accent);font-family:var(--mono);font-size:12px;padding-top:3px;white-space:nowrap}
+.learn dd{margin:0;color:var(--dim)}
+.vnote{margin-top:22px;padding:16px 20px;border-left:3px solid var(--accent);background:var(--bg2);border-radius:0 8px 8px 0;color:var(--fg);font-size:15px}
+@media (max-width:760px){.vrow{grid-template-columns:1fr}.learn{grid-template-columns:1fr;gap:2px}.learn dd{margin-bottom:8px}}
 
 /* 일하는 방식 */
 .flow{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-top:36px;counter-reset:s}
@@ -162,7 +195,7 @@ dialog button{position:fixed;top:calc(16px + env(safe-area-inset-top,0px));right
   <div class="wrap">
     <a class="brand" href="#top">정규연</a>
     <nav aria-label="페이지 목차">
-      <a href="#about">소개</a><a href="#projects">프로젝트</a><a href="#more">개인 작업</a><a href="#how">일하는 방식</a><a href="#contact">연락처</a>
+      <a href="#about">소개</a><a href="#projects">프로젝트</a><a href="#more">개인 작업</a><a href="#videos">영상</a><a href="#how">일하는 방식</a><a href="#also">그 밖에</a><a href="#contact">연락처</a>
     </nav>
   </div>
 </header>
@@ -172,15 +205,15 @@ dialog button{position:fixed;top:calc(16px + env(safe-area-inset-top,0px));right
     <div>
       <div class="who"><b>정규연</b><span>게임 클라이언트 개발자</span></div>
       <h1>끝까지 만들고.<br>직접 확인하고.<br><em>공개까지 합니다.</em></h1>
-      <p class="lead">Unreal C++과 Godot으로 게임 시스템을 짜고, 회귀 테스트와 실측 대조로 동작을 확인합니다. 만든 것은 웹 빌드와 개발일지로 공개합니다.</p>
+      <p class="lead">Unreal C++로 게임 시스템을 짜고, 코드 리뷰와 회귀 테스트, 실측 대조로 동작을 확인합니다. Godot·웹 도구는 AI와 협업해 만들고, 직접 플레이하며 검증해 공개합니다.</p>
       <div class="cta">
         <a class="btn primary" href="#projects">대표 프로젝트 보기 ↓</a>
         <a class="btn" href="#contact">연락처</a>
       </div>
     </div>
     <div>
-      <figure class="shot" data-zoom="img/drone_title.jpg" data-cap="드론 레이싱·미션 게임 타이틀 화면" tabindex="0" style="margin:0">
-        <img src="img/drone_title.jpg" alt="드론 레이싱·미션 게임 타이틀 화면">
+      <figure class="shot" data-zoom="img/drone_v_mission.jpg" data-cap="미션 「골든 타임」 · 드랍 드론으로 제한 시간 안에 구급품 수송" tabindex="0" style="margin:0">
+        <img src="img/drone_v_mission.jpg" alt="사막 마을 위를 나는 드랍 드론과 미션 목표·타이머·기체 상태 HUD">
         <span class="tag">클릭하여 확대</span>
       </figure>
       <div class="cap"><b>드론 레이싱·미션 게임</b><span>졸업작품 · 팀 · Unreal Engine 5 C++</span></div>
@@ -192,26 +225,25 @@ dialog button{position:fixed;top:calc(16px + env(safe-area-inset-top,0px));right
       <div class="eyebrow mono">ABOUT</div>
       <h2 class="sec-title">구현을 맡고, 될 때까지 확인하는 사람</h2>
       <div class="about">
-        <div class="photo">[증명사진]</div>
+        <div class="photo"><img src="img/profile.jpg" alt="정규연 증명사진"></div>
         <div class="intro">
           <h3><small>정규연 · Jeong Gyuyeon</small>게임 클라이언트 개발자입니다.</h3>
-          <p>졸업작품 드론 게임에서 프로그래밍·시스템·테스트를 맡았습니다. 혼자서는 덱빌딩 로그라이크를 끝까지 만들어 itch.io에 공개했고, 지금은 픽셀 오토배틀러를 만들며 과정을 유튜브에 올리고 있습니다.</p>
-          <p>친구들과 마인크래프트·발헤임 서버를 직접 열어 운영하면서, 같이 하는 게임은 끊기지 않고 함께 할 수 있는 환경까지 만들어야 재미있다는 걸 배웠습니다.</p>
+          <p>졸업작품 드론 게임에서 프로그래밍·시스템·테스트를 맡았습니다. AI와 협업해 덱빌딩 로그라이크를 끝까지 만들어 itch.io에 공개했고, 지금은 픽셀 오토배틀러를 만들며 과정을 유튜브에 올리고 있습니다.</p>
+          <p>스트리머 합동 방송용 발헤임 서버를 후원과 연동해 한 달 동안 운영하면서, 같이 하는 게임은 끊기지 않고 아무것도 잃지 않는 환경까지 만들어야 재미있다는 걸 배웠습니다.</p>
         </div>
       </div>
 
       <div class="facts">
         <div class="fact">
           <h4>학력 · 병역</h4>
-          <div class="row"><span class="k">졸업예정</span><span>한국폴리텍대학 서울정수캠퍼스 [학과]</span></div>
-          <div class="row"><span class="k">중퇴</span><span>서울과학기술대학교 [전공]</span></div>
+          <div class="row"><span class="k">졸업예정</span><span>한국폴리텍대학 서울정수캠퍼스 메타버스콘텐츠과</span></div>
           <div class="row"><span class="k">졸업</span><span>서울 대진고등학교</span></div>
           <div class="row"><span class="k">병역</span><span>군필</span></div>
         </div>
         <div class="fact">
           <h4>기술</h4>
-          <div class="row"><span class="k">엔진</span><span class="chips"><span class="chip hot">Unreal Engine 5</span><span class="chip">블루프린트</span><span class="chip hot">Godot 4</span></span></div>
-          <div class="row"><span class="k">언어</span><span class="chips"><span class="chip hot">C++</span><span class="chip">GDScript</span><span class="chip">C#</span><span class="chip">Python</span></span></div>
+          <div class="row"><span class="k">주력</span><span class="chips"><span class="chip hot">C++</span><span class="chip hot">Unreal Engine 5</span><span class="chip">블루프린트</span></span></div>
+          <div class="row"><span class="k">AI 협업</span><span class="chips"><span class="chip">Godot 4 · GDScript</span><span class="chip">JavaScript</span><span class="chip">Python</span><span class="chip">C#</span></span></div>
           <div class="row"><span class="k">협업</span><span class="chips"><span class="chip">Git · GitHub</span><span class="chip">Figma</span></span></div>
           <div class="row"><span class="k">도구</span><span class="chips"><span class="chip">Blender</span><span class="chip">Claude</span><span class="chip">Codex</span></span></div>
         </div>
@@ -221,14 +253,16 @@ dialog button{position:fixed;top:calc(16px + env(safe-area-inset-top,0px));right
           <div class="row"><span class="k">2026</span><span>KATHARSIS · 심리공포 탈출 · Unreal</span></div>
           <div class="row"><span class="k">2026</span><span>림 더 스파이어 · 덱빌딩 로그라이크 · 개인</span></div>
           <div class="row"><span class="k">진행 중</span><span>림토체스 · 픽셀 오토배틀러 · 개인</span></div>
+          <div class="row"><span class="k">진행 중</span><span>메시 작업실 · 2D 리깅 편집기 · 자체 렌더러</span></div>
+          <div class="row"><span class="k">2026</span><span>발헤임 스트리머 라이브 서버 · 1개월 운영</span></div>
           <div class="row"><span class="k">2025</span><span>질서와 혼돈 · AI 대전 카드 게임 · Unreal</span></div>
         </div>
       </div>
 
       <div class="traits">
         <div class="trait"><span class="mono">FINISH</span><h4>끝까지 만듭니다</h4><p>전투부터 저장까지 한 판이 완결되는 웹 빌드를 itch.io에 공개했습니다.</p></div>
-        <div class="trait"><span class="mono">VERIFY</span><h4>직접 확인합니다</h4><p>수정할 때마다 회귀 테스트와 연결 검사를 돌리고, 맵 수치를 기획서와 대조합니다.</p></div>
-        <div class="trait"><span class="mono">TOGETHER</span><h4>같이 하는 걸 만듭니다</h4><p>멀티 서버를 운영하며 음성 모드를 만들고, 다른 PC의 문제까지 좁혀 고쳤습니다.</p></div>
+        <div class="trait"><span class="mono">VERIFY</span><h4>직접 확인합니다</h4><p>수정할 때마다 코드 리뷰로 변경 범위와 영향을 점검하고, 회귀 테스트·연결 검사를 돌린 뒤 맵 수치를 기획서와 대조합니다.</p></div>
+        <div class="trait"><span class="mono">TOGETHER</span><h4>같이 하는 걸 만듭니다</h4><p>후원 연동 라이브 서버를 한 달 운영하며 잠금 충돌·후원 누락 같은 장애를 로그로 좁혀 고쳤습니다.</p></div>
       </div>
     </div>
   </section>
@@ -242,20 +276,21 @@ dialog button{position:fixed;top:calc(16px + env(safe-area-inset-top,0px));right
       <!-- 드론 -->
       <article class="proj">
         <div class="media">
-          <figure class="shot" data-zoom="img/drone_alley.jpg" data-cap="도시 레이스 코스 · 컨테이너 골목 게이트" tabindex="0" style="margin:0"><img src="img/drone_alley.jpg" alt="컨테이너 골목을 지나는 레이스 게이트"><span class="tag">클릭하여 확대</span></figure>
+          <figure class="shot" data-zoom="img/drone_v_gates.jpg" data-cap="훈련 · 원형 코스 체크포인트 비행 (오른쪽 아래: 실제 RC 조종기 조작 화면)" tabindex="0" style="margin:0"><img src="img/drone_v_gates.jpg" alt="사막 훈련장의 체크포인트 링과 비행 경로 안내선"><span class="tag">클릭하여 확대</span></figure>
           <div class="thumbs">
-            <figure class="shot" data-zoom="img/drone_brief.jpg" data-cap="미션 브리핑 화면" tabindex="0" style="margin:0"><img src="img/drone_brief.jpg" alt="미션 브리핑 화면" loading="lazy"></figure>
-            <figure class="shot" data-zoom="img/drone_result.jpg" data-cap="미션 완료 결과 화면" tabindex="0" style="margin:0"><img src="img/drone_result.jpg" alt="미션 완료 결과 화면" loading="lazy"></figure>
-            <figure class="shot" data-zoom="img/drone_city.jpg" data-cap="개인 확장 · 시드로 만드는 랜덤 도시" tabindex="0" style="margin:0"><img src="img/drone_city.jpg" alt="절차적으로 생성한 도시" loading="lazy"></figure>
+            <figure class="shot" data-zoom="img/drone_v_select.jpg" data-cap="미션 기체 선택 · 정찰·드랍·FPV·광섬유 드론" tabindex="0" style="margin:0"><img src="img/drone_v_select.jpg" alt="미션에 사용할 드론을 고르는 기체 선택 화면" loading="lazy"></figure>
+            <figure class="shot" data-zoom="img/drone_v_drop.jpg" data-cap="미션 · 표시 지점에 구호 물자 투하" tabindex="0" style="margin:0"><img src="img/drone_v_drop.jpg" alt="DROP 표시가 뜬 투하 지점 위의 드론 시점" loading="lazy"></figure>
+            <figure class="shot" data-zoom="img/drone_v_city.jpg" data-cap="개인 확장 · 시드로 만드는 랜덤 도시 레이싱" tabindex="0" style="margin:0"><img src="img/drone_v_city.jpg" alt="랜덤 생성 도시의 도로 위 레이스 게이트와 경로선" loading="lazy"></figure>
           </div>
         </div>
         <div>
           <div class="meta mono">대표 프로젝트 · 졸업작품 · 팀</div>
-          <h3>드론 레이싱 · 미션 게임</h3>
+          <h3>드로너 (Droner)</h3>
+          <p class="sub">드론 레이싱 · 미션 게임 · 캡스톤 졸업작품</p>
           <p class="sub">Unreal Engine 5 · C++ · 블루프린트 · 2026</p>
           <div class="body">
             <p>훈련, 게이트 레이스, 물자 투하와 전투 미션을 드론으로 수행하는 게임입니다. 기획·레벨·UI/UX·모델링 담당 팀원과 함께 만들었습니다.</p>
-            <p>각속도 기반 비행 모델과 조작 보조, 데이터로 짜는 미션 시스템, 적 AI와 무기를 구현했고, 테스트를 맡아 수정할 때마다 기존 기능이 깨지지 않았는지 확인했습니다.</p>
+            <p>각속도 기반 비행 모델과 조작 보조, 데이터로 짜는 미션 시스템, 적 AI와 무기를 구현했고, 테스트를 맡아 수정할 때마다 코드 리뷰와 회귀 테스트로 기존 기능이 깨지지 않았는지 확인했습니다.</p>
           </div>
           <div class="role"><b>담당</b>프로그래밍 · 시스템 · 테스트</div>
           <div class="nums">
@@ -280,13 +315,15 @@ dialog button{position:fixed;top:calc(16px + env(safe-area-inset-top,0px));right
           <figure class="shot" data-zoom="img/spire.jpg" data-cap="림 더 스파이어 전투 화면" tabindex="0" style="margin:0"><img src="img/spire.jpg" alt="림 더 스파이어 전투 화면" loading="lazy"><span class="tag">클릭하여 확대</span></figure>
         </div>
         <div>
-          <div class="meta mono">개인 프로젝트 · 공개</div>
+          <div class="meta mono">개인 프로젝트 · 공개 · 팬게임 · AI 협업</div>
           <h3>림 더 스파이어</h3>
-          <p class="sub">덱빌딩 로그라이크 · Godot 4 · 2026</p>
+          <p class="sub">림버스 컴퍼니 팬게임 · 덱빌딩 로그라이크 · Godot 4 · 2026</p>
           <div class="body">
+            <p>Project Moon의 「림버스 컴퍼니」를 덱빌딩 로그라이크로 옮긴 팬게임입니다. 원작의 출혈·화상·진동·파열·침잠·호흡 같은 상태 효과를 카드 규칙으로 다시 짜고, 원작의 던전 탐사처럼 층을 내려가며 길을 고르는 원정 지도를 구현하는 것이 목표였습니다.</p>
             <p>전투, 카드 강화, 보상, 원정 지도, 휴식과 이벤트, 저장까지 한 판이 완결되는 웹 빌드를 itch.io에 공개했습니다.</p>
             <p>카드 수백 종을 데이터로 관리하고, 강화 뒤 효과가 겹치는 카드를 자동 테스트로 잡아 0건으로 유지했습니다. 플레이 피드백을 받아 화면 비율별 UI와 텍스트 길이에 흔들리지 않는 카드 레이아웃으로 고쳤습니다.</p>
           </div>
+          <div class="role"><b>내 역할</b>기획 · 작업 분배 · 플레이 테스트와 검수 (코드 작성은 AI 협업)</div>
           <div class="links"><a class="btn primary" href="https://gyeonliz.itch.io/lim-the-spire" target="_blank" rel="noopener">itch.io에서 플레이 ↗</a></div>
         </div>
       </article>
@@ -310,7 +347,7 @@ dialog button{position:fixed;top:calc(16px + env(safe-area-inset-top,0px));right
             <p>비밀번호는 레벨에 고정하지 않고 시작할 때 만듭니다. 방마다 시계 시각을 무작위로 정하고 그림 순서를 섞어, 공략을 외워도 다음 판에는 답이 바뀝니다.</p>
           </div>
           <div class="role"><b>담당</b>게임플레이 프로그래밍 · 2인 팀 (팀원: 기획 · 레벨 디자인 · 시네마틱)</div>
-          <div class="links"><a class="btn" href="https://github.com/gyeonliz/Fractured" target="_blank" rel="noopener">소스 코드 (GitHub) ↗</a></div>
+          <div class="links"><a class="btn primary" href="https://www.youtube.com/watch?v=UP75ZRN3y7k" target="_blank" rel="noopener">트레일러 ↗</a><a class="btn" href="https://www.youtube.com/watch?v=fLj8rgyWTPg" target="_blank" rel="noopener">플레이 영상 ↗</a><a class="btn" href="https://github.com/gyeonliz/Fractured" target="_blank" rel="noopener">소스 코드 (GitHub) ↗</a></div>
         </div>
       </article>
 
@@ -320,13 +357,15 @@ dialog button{position:fixed;top:calc(16px + env(safe-area-inset-top,0px));right
           <figure class="shot" data-zoom="img/limto.jpg" data-cap="림토체스 전투 화면" tabindex="0" style="margin:0"><img src="img/limto.jpg" alt="림토체스 좌우 대치 전투 화면" loading="lazy"><span class="tag">클릭하여 확대</span></figure>
         </div>
         <div>
-          <div class="meta mono">개인 프로젝트 · 진행 중 · 팬게임</div>
+          <div class="meta mono">개인 프로젝트 · 진행 중 · 팬게임 · AI 협업</div>
           <h3>림토체스</h3>
-          <p class="sub">좌우 대치형 픽셀 오토배틀러 · Godot 4</p>
+          <p class="sub">림버스 컴퍼니 팬게임 · 좌우 대치형 픽셀 오토배틀러 · Godot 4</p>
           <div class="body">
+            <p>「림버스 컴퍼니」의 인격들을 롤토체스 방식의 오토배틀러로 옮기는 팬게임입니다. 소속·전투 방식·직업 세 갈래 시너지가 겹치는 조합 설계와, 원작 SD 그림을 기준으로 새로 찍은 도트 기물이 좌우로 마주 보고 싸우는 연출을 구현하고 싶었습니다.</p>
             <p>상점 구매, 배치, 자동 전투, 정산이 돌아가는 상태입니다. 롤토체스 시너지 구조를 조사해 원거리 비율, 역할 5종, 코스트 분배를 표로 검산하며 기물 58종을 짜고 있습니다.</p>
             <p>AI가 낸 명단이 원작 무기와 맞지 않으면 다시 묻고 기준을 정합니다. 그 과정을 유튜브 쇼츠 개발일지로 연재합니다.</p>
           </div>
+          <div class="role"><b>내 역할</b>기획 · 밸런스 기준 · 플레이 검수 (코드 작성은 AI 협업)</div>
           <div class="links"><a class="btn" href="https://youtube.com/shorts/OKJFkKbpLTc" target="_blank" rel="noopener">개발일지 1편 ↗</a></div>
         </div>
       </article>
@@ -344,8 +383,83 @@ dialog button{position:fixed;top:calc(16px + env(safe-area-inset-top,0px));right
             <p>카드마다 안전한 질서(앞면)와 위험한 혼돈(뒷면) 중 골라 쓰는 규칙입니다. AI는 손패 가중치 합에 대한 비율로 낼 카드를 고르고, 드로우 확률도 같은 방식으로 정합니다.</p>
             <p>운명·함정·축복 카드 효과를 데이터 테이블로 관리해 기획한 30종을 모두 구현했습니다.</p>
           </div>
+          <div class="links"><a class="btn" href="https://www.youtube.com/watch?v=jTNiL-_LwIE" target="_blank" rel="noopener">시연 영상 ↗</a></div>
         </div>
       </article>
+
+      <!-- 메시 작업실 -->
+      <article class="proj flip">
+        <div class="media">
+          <figure class="shot" data-zoom="img/l2d_model.jpg" data-cap="자체 렌더러 출력 · 46레이어 · 23디포머" tabindex="0" style="margin:0"><img src="img/l2d_model.jpg" alt="자체 렌더러로 그린 2D 캐릭터 모델 정면" loading="lazy"><span class="tag">클릭하여 확대</span></figure>
+          <div class="thumbs">
+            <figure class="shot" data-zoom="img/l2d_editor.jpg" data-cap="편집기 화면 · 레이어 · 디포머 · 파라미터 패널 (시험 원화)" tabindex="0" style="margin:0"><img src="img/l2d_editor.jpg" alt="레이어·디포머·파라미터 패널이 있는 편집기 화면" loading="lazy"></figure>
+          </div>
+        </div>
+        <div>
+          <div class="meta mono">개인 프로젝트 · 진행 중 · AI 협업</div>
+          <h3>메시 작업실</h3>
+          <p class="sub">2D 메시 리깅 편집기 · 자체 렌더러 · moc3 변환기 · Electron</p>
+          <div class="body">
+            <p>Live2D 방식의 2D 리깅 편집기와 렌더러를 처음부터 구현하고 있습니다. PSD 레이어를 가져와 메시 정점·삼각형을 만들고, 회전·워프 디포머 계층에 연결한 뒤 파라미터 축별 키폼을 보간해 화면에 그립니다. 모션 타임라인, 진자 물리, 마스크·합성도 같은 문서 형식 안에서 편집합니다.</p>
+            <p>편집한 문서는 공식 런타임 형식(moc3 · model3 · physics3 · motion3)으로 변환합니다. 자체 렌더 결과와 변환 파일을 같은 자세로 그려 정점 위치를 비교하고, 뒤집히거나 퇴화한 삼각형이 없는지 검사합니다.</p>
+          </div>
+          <div class="role"><b>내 역할</b>구조 설계 · 작업 분배 · 렌더·변환 결과 검수 (코드는 AI 협업)</div>
+          <div class="nums">
+            <div class="num"><b>0.065</b><span>변환 최대 오차(px)</span></div>
+            <div class="num"><b>0</b><span>뒤집힌·퇴화 삼각형</span></div>
+            <div class="num"><b>46</b><span>모델 레이어</span></div>
+            <div class="num"><b>23</b><span>회전·워프 디포머</span></div>
+          </div>
+        </div>
+      </article>
+
+      <!-- 발헤임 라이브 서버 -->
+      <article class="proj">
+        <div class="media">
+          <div class="panel">
+            <div><span class="mono">LIVE SERVICE · 2026.10–11</span><h4>장애는 기록으로 좁히고,<br>검증한 뒤에 반영한다</h4></div>
+            <ol>
+              <li><b>01</b>신고 접수 → 로그·저장본·접속 시각 대조</li>
+              <li><b>02</b>원인 범위를 좁혀 수정본을 격리 환경에서 검사</li>
+              <li><b>03</b>정상 저장 확인 → 라이브 적용 → 결과 재확인</li>
+            </ol>
+          </div>
+        </div>
+        <div>
+          <div class="meta mono">라이브 서비스 · 1개월 운영 · AI 협업</div>
+          <h3>발헤임 스트리머 라이브 서버</h3>
+          <p class="sub">데디케이티드 서버 · 자체 상점 · BepInEx 모드(C#) 수정 · 원격 운영 도구</p>
+          <div class="body">
+            <p>스트리머들만 함께 플레이하는 합동 방송 서버를 한 달 동안 운영했습니다. 각자의 방송에 들어온 후원이 게임 안의 효과로 이어지고, 게임 골드로 사는 자체 상점과 투기장 같은 운영 기능을 직접 붙였습니다.</p>
+            <p>여러 방송이 동시에 송출되는 중이라 서버를 함부로 내릴 수 없었습니다. 문제가 생기면 먼저 기록으로 원인을 좁히고, 저장과 구매 기록을 지킨 채 고친 뒤 실제로 나아졌는지 다시 확인했습니다.</p>
+          </div>
+          <div class="role"><b>담당</b>서버 구축 · 상점·모드 기획과 수정 · 장애 대응 · 업데이트 검증 (모드 코드는 AI 협업)</div>
+          <div class="nums">
+            <div class="num"><b>1개월</b><span>라이브 운영</span></div>
+            <div class="num"><b>60</b><span>적용 전 격리·큐 검사</span></div>
+            <div class="num"><b>455</b><span>구매 영수증 무손실 보존</span></div>
+            <div class="num"><b>24,888</b><span>종료 백업 SHA-256 일치</span></div>
+          </div>
+        </div>
+      </article>
+
+      <h4 class="sub-h">직접 만든 것 · 고친 것</h4>
+      <div class="details">
+        <div class="detail mine"><span class="mono">SHOP</span><h4>게임 골드 자체 상점</h4><p>F8로 여는 구매 전용 상점을 만들었습니다. 같은 상품이 서버 전체에서 팔릴수록 값이 오르고, 구매·사용이 생기면 관리자에게 알림이 갑니다. 관리자는 게임 채팅의 <code>/shop add · price · list</code>로 상품과 가격을 바꾸며, 가격을 바꿔도 구매 기록은 지워지지 않습니다.</p></div>
+        <div class="detail"><span class="mono">DONATION</span><h4>후원 효과와 우편함</h4><p>후원 금액대별로 음식, 몹 소환, 디버프, 이로운 효과, 스킬 변화가 적용됩니다. 효과마다 켜고 끄기, 금액, 몹 종류·수를 운영 중에 명령으로 바꿀 수 있게 했고, 보상은 F4 우편함으로 받습니다.</p></div>
+        <div class="detail"><span class="mono">OPS TOOLS</span><h4>운영 도구와 원격 관리</h4><p>투기장 대진 공지·전체 회복·칭호, 개인 습격과 보스 개인 완료 기록, 야생 몹·바닥 아이템 정리(미리보기 후 실행)를 추가했습니다. HTTPS 원격 에이전트로 정상 저장·종료와 로그 30일·월드 사본 7일 자동 보관을 돌렸습니다.</p></div>
+        <div class="detail"><span class="mono">MOD PATCH</span><h4>업데이트로 깨진 모드 고치기</h4><p>공식 서버가 1.0.17에서 1.0.20으로 올라가며 관리자 도구가 맞지 않게 되자, 제작 관련 호환 코드 두 곳을 고쳐 운영을 이어갔습니다. 0.5초마다 디스크에 강제로 쓰던 접속 상태 기록도 걷어냈습니다.</p></div>
+      </div>
+
+      <h4 class="sub-h">장애 대응 사례</h4>
+      <div class="details">
+        <div class="detail inc"><span class="mono">CASE 01 · 상점</span><h4>상점 잠금 경합으로 인한 구매 지연</h4><dl><dt>현상</dt><dd>구매 요청이 몰릴 때 상점이 응답하지 않고 대기 상태가 길어짐</dd><dt>원인</dt><dd>게임 서버와 원격 에이전트가 같은 잠금을 각각 점유한 채 대기</dd><dt>해결</dt><dd>조회는 읽기 잠금을 공유하고, 결제·지급·환불만 단독 잠금으로 분리</dd><dt>결과</dt><dd>격리 검사 28건·요청 큐 검사 32건 통과 후 라이브 반영, 구매 영수증 455건 보존</dd></dl></div>
+        <div class="detail inc"><span class="mono">CASE 02 · 후원</span><h4>후원 효과 누락 및 중복 지급 위험</h4><dl><dt>현상</dt><dd>일부 후원이 게임 효과로 반영되지 않음</dd><dt>원인</dt><dd>방송 상태 조회 시간 초과, 미접속 상태의 후원 처리 기준 부재</dd><dt>해결</dt><dd>적용 조건을 방송 중·접속 중으로 정의하고 시간 초과를 보완, 본인 누락 확인 명령 추가</dd><dt>결과</dt><dd>누락분 재확인 경로를 마련하면서 중복 지급 방지 로직으로 재지급 오류를 차단</dd></dl></div>
+        <div class="detail inc"><span class="mono">CASE 03 · 네트워크</span><h4>보스전 중 보스 미표시 신고</h4><dl><dt>분석</dt><dd>같은 시각 로그에서 송신 중단, 연결 시간 초과, 재접속 순서를 확인</dd><dt>판단</dt><dd>연결 장애 가능성이 높으나 보스 생성 기록이 없어 원인을 단정하지 않음</dd><dt>검증</dt><dd>동일 오류가 최근 패치 이전에도 존재함을 확인해 패치 원인설을 배제</dd></dl></div>
+        <div class="detail inc"><span class="mono">CASE 04 · 데이터</span><h4>보관함 재화 감소 신고</h4><dl><dt>분석</dt><dd>월드 저장본, 보관함 인벤토리, 접속 시각을 시점별로 비교</dd><dt>판단</dt><dd>기록으로 확인 가능한 범위와 확정할 수 없는 범위를 구분해 보고</dd><dt>원칙</dt><dd>근거 없는 추정에 따른 보상이나 책임 지목을 하지 않음</dd></dl></div>
+        <div class="detail inc"><span class="mono">CASE 05 · 모니터링</span><h4>로그 급증의 장애 오판 방지</h4><dl><dt>분석</dt><dd>대량 로그가 접속자별 5초 주기 등록 기록임을 확인</dd><dt>판단</dt><dd>로그 양만으로 장애를 판정하지 않도록 정상 패턴을 정리</dd><dt>원칙</dt><dd>등록 기록은 후원 접속 확인에 쓰이므로 로그 축소 목적으로 제거하지 않음</dd></dl></div>
+        <div class="detail inc mine"><span class="mono">SAFE OPS</span><h4>무손실 배포·종료 절차</h4><dl><dt>배포 전</dt><dd>정상 저장 표식과 메모리 여유(75% 기준) 확인</dd><dt>배포 후</dt><dd>서버 준비, 플러그인 실패 0건, 상점 경고 0건 재확인</dd><dt>종료</dt><dd>저장 완료 후 서버 파일 24,888개·월드 파일 254개를 SHA-256으로 대조해 백업</dd></dl></div>
+      </div>
     </div>
   </section>
 
@@ -355,43 +469,119 @@ dialog button{position:fixed;top:calc(16px + env(safe-area-inset-top,0px));right
       <h2 class="sec-title">작게 만들고, 같이 쓰는 것들</h2>
       <div class="grid3">
         <div class="mini">
-          <div class="pic pix"><img src="img/pet_walk.gif" alt="픽셀 미니펫 걷기 애니메이션" loading="lazy"></div>
-          <div class="txt"><span class="meta mono">C++ · Win32 · Direct2D</span><h4>데스크톱 펫 · 픽셀 버전</h4><p>바탕화면과 창 위를 걷고, 매달리고, 커피를 마시는 펫입니다. 동작 18종을 80도트 픽셀로 다시 만들고, 도트가 정수배로 또렷하게 그려지도록 렌더러를 고쳤습니다.</p></div>
+          <div class="pic pix"><img class="dots" src="img/pet_walk.gif?v=2" data-w="40" data-h="68" width="160" height="272" alt="픽셀 미니펫 걷기 애니메이션"></div>
+          <div class="txt"><span class="meta mono">C++ · Win32 · Direct2D · AI 협업</span><h4>데스크톱 펫 · 픽셀 버전</h4><p>바탕화면과 다른 프로그램 창 위를 걷고, 매달리고, 벽을 타는 펫입니다. 투명 레이어드 창에 Direct2D로 그리고, 열린 창의 실제 테두리를 DWM에서 읽어 발판으로 씁니다. 행동은 상태 15개짜리 상태 머신이 돌리고, 포만감·행복도·활력이 다음 행동을 고릅니다.</p><p>픽셀 버전은 그리는 크기를 도트 캔버스의 정수배로 맞추고 최근접 보간으로 그려 도트가 번지지 않게 했습니다. 걷는 속도는 원화의 보폭에 맞췄고, 동작별 컷 수와 재생 시간은 시뮬레이션 테스트로 고정했습니다.</p></div>
         </div>
         <div class="mini">
-          <div class="pic type"><span>Valheim<br><small>BepInEx · Voice</small></span></div>
-          <div class="txt"><span class="meta mono">BepInEx · 전용 서버</span><h4>발헤임 음성 모드</h4><p>멀티플레이 중 음성 기능 모드를 만들고 전용 서버를 운영했습니다. 한 사람의 PC에서만 마이크가 안 되는 문제를 원인까지 좁혀 대응했습니다.</p></div>
+          <div class="pic"><img src="img/kbo_overlay.jpg" alt="KBO 중계 OBS 오버레이의 점수판, 이닝별 점수, 주자 상황판" loading="lazy"></div>
+          <div class="txt"><span class="meta mono">Node.js · React · Socket.IO · AI 협업</span><h4>KBO 중계 OBS 오버레이</h4><p>네이버 KBO 경기 데이터를 주기적으로 수집해 점수·이닝·볼카운트·주자·라인업을 OBS 방송 화면에 실시간으로 띄웁니다. JSON 수집이 실패하면 화면 크롤링 백업으로 자동 전환되고, EXE 하나로 실행됩니다.</p></div>
         </div>
         <div class="mini">
-          <div class="pic type"><span>Minecraft<br><small>Forge 1.20.1 · Server</small></span></div>
-          <div class="txt"><span class="meta mono">Forge 1.20.1</span><h4>마인크래프트 모드팩 서버</h4><p>모드팩 서버를 구축해 클라이언트 묶음까지 배포하고, 경제 밸런스가 무너지면 상한값을 다시 시험하며 운영했습니다.</p></div>
-        </div>
-        <div class="mini">
-          <div class="pic"><img src="img/ar.jpg" alt="HealthAR 바코드 인식 화면" loading="lazy"></div>
-          <div class="txt"><span class="meta mono">Unity · 수업</span><h4>HealthAR</h4><p>음료 바코드를 인식해 카페인 같은 주의 표시를 띄우는 모바일 앱입니다.</p></div>
-        </div>
-        <div class="mini">
-          <div class="pic fit"><img src="img/sticker.png" alt="다람쥐 보급병 스티커" loading="lazy"></div>
-          <div class="txt"><span class="meta mono">일러스트 · 수업</span><h4>군대 동물 스티커</h4><p>다람쥐 보급병, 고양이 드론병 등 병과별 캐릭터 이모티콘 세트입니다.</p></div>
-        </div>
-        <div class="mini">
-          <div class="pic fit" style="background:#000"><img src="img/ci.png" alt="CI 공모전 로고 시안" loading="lazy"></div>
-          <div class="txt"><span class="meta mono">디자인 · 공모전</span><h4>CI 공모전 출품</h4><p>의정부시청소년재단 CI 공모전에 낸 로고 시안입니다.</p></div>
+          <div class="pic"><img src="img/ar_scan.jpg" alt="HealthAR 실행 화면: 바코드 인식 후 무당 음료에는 초록 표시, 탄산음료에는 혈당 주의 경고와 각설탕 오브젝트가 쌓인 모습" loading="lazy"></div>
+          <div class="txt"><span class="meta mono">Unity · AR Foundation · C# · 수업 · AI 협업</span><h4>HealthAR</h4><p>성분표의 "당류 38g"은 얼마나 많은지 감이 오지 않는다는 문제에서 출발한 AR 앱입니다. 숫자를 읽게 하지 말고 눈에 보이게 하는 것이 목적이었습니다.</p><p>AR 카메라 프레임에서 ZXing으로 바코드를 읽어 제품 데이터를 찾고, 당류를 3g짜리 각설탕 개수로 바꿔 제품 앞에 물리로 떨어뜨려 쌓습니다. 카페인·대체당 같은 혈당 주의 성분과 알레르기는 빨간 경고로, 인증 정보는 배지로 띄웁니다.</p></div>
         </div>
       </div>
     </div>
   </section>
 
+  <section id="videos">
+    <div class="wrap">
+      <div class="eyebrow mono">VIDEOS</div>
+      <h2 class="sec-title">만들면서 부딪히고 배운 것</h2>
+      <p class="sec-lead">한국폴리텍대학 메타버스콘텐츠과 채널에 공개된 제 작업을 만든 순서대로 놓았습니다. 작품마다 막혔던 문제와 그 뒤로 바꾼 방식을 적었습니다.</p>
+      <div class="vlist">
+        <article class="vrow">
+          <a class="vthumb" href="https://www.youtube.com/watch?v=UGeSdOG6e98" target="_blank" rel="noopener"><img src="img/yt_UGeSdOG6e98.jpg" alt="1학기 기말 프로젝트 플레이 영상 썸네일" loading="lazy"><i aria-hidden="true">▶ 영상</i></a>
+          <div class="vtxt">
+            <span class="meta mono">2025 1학기 · 개인 · Unreal</span>
+            <h4>1학기 기말 프로젝트</h4>
+            <p class="vd">3인칭 슈터에 뱀서라이크(몰려오는 적을 버티며 성장)를 섞은 첫 Unreal 게임입니다.</p>
+            <dl class="learn">
+              <dt>부딪힌 문제</dt><dd>처음이라 기능 구현에만 집중했습니다. 스킬과 스탯 구조가 만들다 보니 생각과 달라 여러 번 갈아엎었고, 그때마다 데이터와 설정이 흩어져 관리가 어려워졌습니다. 적이 늘수록 최적화가 안 됐고, 이펙트와 밸런스까지는 손대지 못했습니다.</dd>
+              <dt>바꾼 것</dt><dd>만들기 전에 데이터 구조와 성장 규칙부터 정합니다. 이후 작업에서는 수치를 데이터 테이블·Data Asset으로 떼어 내고, 많이 생성되는 대상은 처음부터 성능을 함께 고려합니다.</dd>
+            </dl>
+          </div>
+        </article>
+        <article class="vrow">
+          <a class="vthumb" href="https://www.youtube.com/watch?v=jTNiL-_LwIE" target="_blank" rel="noopener"><img src="img/yt_jTNiL-_LwIE.jpg" alt="질서와 혼돈 시연 영상 썸네일" loading="lazy"><i aria-hidden="true">▶ 영상</i></a>
+          <div class="vtxt">
+            <span class="meta mono">2025 2학기 · 개인 · Unreal</span>
+            <h4>질서와 혼돈</h4>
+            <p class="vd">카드마다 질서(앞면)와 혼돈(뒷면) 중 골라 쓰는 AI 대전 카드 게임입니다.</p>
+            <dl class="learn">
+              <dt>부딪힌 문제</dt><dd>특수 효과가 복잡해질수록 효과끼리 얽혀 구조가 쉽게 무너졌습니다. 언리얼 위젯(WBP)으로 2D 카드 UI를 만들면서, 손패가 한 장일 때부터 여러 장일 때까지 정해진 공간 안에 반응형으로 배치하는 일이 특히 까다로웠습니다.</dd>
+              <dt>바꾼 것</dt><dd>효과를 데이터 에셋으로 정리하려면 구조를 먼저 잘 짜야 한다는 걸 배웠습니다. 효과를 공통 형식으로 나눠 데이터로 관리해 기획한 30종을 모두 구현했습니다.</dd>
+            </dl>
+          </div>
+        </article>
+        <article class="vrow">
+          <a class="vthumb" href="https://www.youtube.com/watch?v=S39-KocItFI" target="_blank" rel="noopener"><img src="img/yt_S39-KocItFI.jpg" alt="캡스톤 경진대회 2조 작품 시연 썸네일" loading="lazy"><i aria-hidden="true">▶ 영상</i></a>
+          <div class="vtxt">
+            <span class="meta mono">2025 · 6인 팀 · Unreal · 코딩·기획 담당</span>
+            <h4>캡스톤 경진대회 2조</h4>
+            <p class="vd">2D 횡스크롤 보스 액션입니다.</p>
+            <dl class="learn">
+              <dt>부딪힌 문제</dt><dd>여섯 명이 한 프로젝트를 만지면서 작업 범위와 결과물을 맞추는 일이 구현만큼 어려웠습니다. 3D 엔진에서 2D 횡스크롤을 만들다 보니 캡슐 충돌체가 미끄러지는 등 이동 감각을 잡기 힘들었습니다.</dd>
+              <dt>바꾼 것</dt><dd>팀 작업은 역할과 완료 기준을 먼저 맞춥니다. 엔진 기본 동작이 장르와 맞지 않으면 그 부분은 직접 제어해야 한다는 것도 배웠습니다.</dd>
+            </dl>
+          </div>
+        </article>
+        <article class="vrow">
+          <a class="vthumb" href="https://www.youtube.com/watch?v=UP75ZRN3y7k" target="_blank" rel="noopener"><img src="img/yt_UP75ZRN3y7k.jpg" alt="KATHARSIS 트레일러 썸네일" loading="lazy"><i aria-hidden="true">▶ 영상</i></a>
+          <div class="vtxt">
+            <span class="meta mono">2026 · 2인 팀 · Unreal C++ · 게임플레이 프로그래밍</span>
+            <h4>KATHARSIS</h4>
+            <p class="vd">정신병원 탈출 심리공포입니다. 데스크톱판과 VR판을 만들었습니다.</p>
+            <dl class="learn">
+              <dt>부딪힌 문제</dt><dd>저장·기록과 오브젝트 배치를 플레이어가 단서를 보고 자연스럽게 따라가게 짜는 것이 과제였습니다. 판마다 바뀌는 비밀번호는 정답 생성, 단서 표시, 입력 검사가 같은 데이터를 봐야 해서 관리가 까다로웠고, 시계 바늘로 비밀번호를 보여 줄 때 바늘 회전이 정답 시각과 맞지 않는 문제를 겪었습니다. VR판에서는 데스크톱 기준으로 만든 상호작용과 UI를 손 조작에 맞게 다시 만들어야 했고, 조작감을 맞추는 데 오래 걸렸습니다.</dd>
+              <dt>바꾼 것</dt><dd>정답 데이터는 한 곳에서 만들고 표시와 검사는 그 데이터를 읽게 해야 어긋나지 않습니다. 플랫폼이 바뀌면 입력과 UI는 처음부터 다시 설계합니다.</dd>
+            </dl>
+          </div>
+        </article>
+      </div>
+      <p class="vnote">이때 직접 부딪힌 문제들이 지금 AI와 일할 때 먼저 정하는 기준이 됐습니다. 데이터 구조, 정답과 판정 기준, 플랫폼별 입력 방식은 AI에게 맡기기 전에 제가 정합니다.</p>
+      <div class="links"><a class="btn" href="https://www.youtube.com/watch?v=6rpwWAMmJdI" target="_blank" rel="noopener">캡스톤 2조 제작 과정 ↗</a><a class="btn" href="https://www.youtube.com/watch?v=fLj8rgyWTPg" target="_blank" rel="noopener">KATHARSIS 플레이 영상 ↗</a></div>
+    </div>
+  </section>
+
   <section id="how">
     <div class="wrap">
-      <div class="eyebrow mono">HOW I WORK</div>
-      <h2 class="sec-title">AI에 맡기고, 판단과 검증은 직접</h2>
-      <p class="sec-lead">무엇을 맡기고 무엇을 직접 확인할지 정하는 것이 개발자의 일이라고 생각합니다. 검토를 거치지 않은 결과는 실제 게임에 덮어쓰지 않습니다.</p>
+      <div class="eyebrow mono">HOW I WORK WITH AI</div>
+      <h2 class="sec-title">방향은 제가 잡고, 결과는 직접 확인합니다</h2>
+      <p class="sec-lead">AI에게 일을 통째로 맡기지 않습니다. 무엇을 만들지, 어떤 구조로 갈지, 어디까지 되면 끝인지는 직접 만들며 겪은 경험을 바탕으로 제가 정하고, AI에게는 그 기준 안에서 구현을 맡깁니다. AI는 그럴듯한 수정안을 빠르게 내지만 A를 고치다 B가 깨지는 일은 그대로 일어나므로, 결과는 미리 정한 방법으로 확인합니다.</p>
       <div class="flow">
-        <div class="step"><b>1</b><h4>나누기</h4><p>작업을 담당별로 쪼개 범위와 완료 기준을 정합니다.</p></div>
-        <div class="step"><b>2</b><h4>맡기기</h4><p>코드는 Claude, 조사·검토·원화는 Codex에 나눠 맡깁니다.</p></div>
-        <div class="step"><b>3</b><h4>검증하기</h4><p>독립 검토, 자동 테스트, 실제 실행 화면으로 확인합니다.</p></div>
-        <div class="step"><b>4</b><h4>합치기</h4><p>원본을 백업한 뒤 통과한 것만 반영합니다.</p></div>
+        <div class="step"><b>1</b><h4>방향 정하기</h4><p>기능의 구조와 데이터 형식, 완료 기준을 제 판단으로 먼저 정합니다. 그 기준대로 일을 쪼개 코드는 Claude, 자료 조사·문서 검토는 Codex에 나눠 맡깁니다.</p></div>
+        <div class="step"><b>2</b><h4>영향 범위 보기</h4><p>AI가 만든 변경에서 바뀐 함수가 어디서 불리는지, 저장·화면·네트워크까지 닿는지 확인합니다. C++ 코드는 직접 읽고 리뷰합니다.</p></div>
+        <div class="step"><b>3</b><h4>관련 검증 돌리기</h4><p>영향받는 기능의 회귀 테스트와 연결 검사를 골라 돌리고, 실제 실행 화면이나 영상으로 한 번 더 봅니다.</p></div>
+        <div class="step"><b>4</b><h4>승인 후 반영</h4><p>통과한 것만 원본을 백업한 뒤 반영합니다. 실패하면 원인을 붙여 다시 맡기고, 같은 검증을 반복합니다.</p></div>
+      </div>
+      <h4 class="sub-h">AI 결과를 제 기준으로 되돌린 순간</h4>
+      <div class="details">
+        <div class="detail"><span class="mono">메시 작업실</span><h4>수치는 통과, 화면은 불합격</h4><p>변환 오차와 삼각형 검사를 모두 통과한 모델을 연속 재생으로 보니 목과 머리가 떠 보였습니다. 반려 후 목 디포머가 머리 기울기를 따라가지 않는 원인을 찾아 고쳤고, 피부점 흔들림을 4.19px에서 0.006px로 줄였습니다.</p></div>
+        <div class="detail"><span class="mono">발헤임 서버</span><h4>그럴듯한 원인을 보류</h4><p>"보스가 안 보였다"는 신고에 연결 장애라는 설명이 쉽게 나왔지만, 보스 생성 기록이 없어 원인을 확정하지 않았습니다. 같은 오류가 패치 이전에도 있었다는 근거로 패치 탓도 배제했습니다.</p></div>
+        <div class="detail"><span class="mono">림토체스</span><h4>데이터가 원작과 다를 때</h4><p>AI가 낸 기물 명단의 무기와 역할이 원작 설정과 맞지 않는 것을 확인하고, 기준 자료를 정해 다시 짜게 했습니다. 원거리 비율과 코스트 분배는 표로 직접 검산합니다.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="also">
+    <div class="wrap">
+      <div class="eyebrow mono">ALSO TRIED</div>
+      <h2 class="sec-title">코드 밖에서도 해 봤습니다</h2>
+      <p class="sec-lead">서비스 기획, UI/UX, 디자인처럼 개발 말고도 직접 해 본 작업입니다.</p>
+      <div class="grid3">
+        <div class="mini">
+          <div class="pic"><img src="img/lifepaws.jpg" alt="LIFEPAWS 프로토타입 화면 세 장: 홈, AI 진단 결과, 제품 캘린더" loading="lazy"></div>
+          <div class="txt"><span class="meta mono">팀 작업 · UI/UX 프로토타입 · Figma Make · 2026</span><h4>LIFEPAWS · 반려동물 건강 앱</h4><p>비싸고 불투명한 진료비, 노령 반려동물 관리의 어려움에서 출발한 비대면 진료·관리 앱입니다. 사진으로 AI 1차 진단을 받고 바로 수의사 상담으로 넘어가는 흐름, 사료·영양제 바코드를 찍으면 급여 시작일과 유통기한이 캘린더에 들어가는 흐름을 담았습니다.</p><p>팀원과 함께 만들었고, 저는 기획을 보조하면서 메인 구현을 맡아 Figma Make로 화면 29개를 이어 실제로 눌러 보는 프로토타입을 만들었습니다.</p></div>
+        </div>
+        <div class="mini">
+          <div class="pic" style="background:#fff"><img src="img/ci.jpg" alt="의정부도시교육재단 CI 공모전 출품 시안: 원 안의 U·Y 사람 형상과 펼친 책, 꽃과 잎" loading="lazy"></div>
+          <div class="txt"><span class="meta mono">디자인 · 공모전 · 2025</span><h4>CI 공모전 출품</h4><p>의정부도시교육재단 CI 공모전 출품작입니다. 의정부의 U와 사람 형상의 Y를 펼친 책 위에 세우고, 꽃과 잎으로 자라는 배움을 표현했습니다. 그리드 설계, 국·영문 시그니처, 색상 규정까지 만들었습니다.</p></div>
+        </div>
+        <div class="mini">
+          <div class="pic fit"><img src="img/sticker.png" alt="다람쥐 보급병 스티커" loading="lazy"></div>
+          <div class="txt"><span class="meta mono">일러스트 · 수업</span><h4>군대 동물 스티커</h4><p>다람쥐 보급병, 고양이 드론병 등 병과별 캐릭터 이모티콘 세트입니다.</p></div>
+        </div>
       </div>
     </div>
   </section>
@@ -404,7 +594,7 @@ dialog button{position:fixed;top:calc(16px + env(safe-area-inset-top,0px));right
         <p class="sec-lead">구현과 검증을 함께 책임지는 신입 클라이언트 개발자가 되겠습니다.</p>
       </div>
       <div class="clist">
-        <div class="citem"><span>이메일</span><em>[이메일 입력]</em></div>
+        <div class="citem"><span>이메일</span><a href="mailto:jkw6483@gmail.com">jkw6483@gmail.com</a></div>
         <div class="citem"><span>GitHub</span><a href="https://github.com/gyeonliz" target="_blank" rel="noopener">github.com/gyeonliz ↗</a></div>
         <div class="citem"><span>itch.io</span><a href="https://gyeonliz.itch.io/lim-the-spire" target="_blank" rel="noopener">gyeonliz.itch.io/lim-the-spire ↗</a></div>
         <div class="citem"><span>개발일지</span><a href="https://youtube.com/shorts/OKJFkKbpLTc" target="_blank" rel="noopener">유튜브 쇼츠 ↗</a></div>
@@ -412,7 +602,7 @@ dialog button{position:fixed;top:calc(16px + env(safe-area-inset-top,0px));right
     </div>
   </section>
 </main>
-<footer><div class="wrap">© 2026 정규연 · 팀 프로젝트의 그래픽·레벨 자산은 각 담당 팀원의 작업입니다. 림토체스는 Project Moon「림버스 컴퍼니」의 비공식·비상업 팬게임입니다.</div></footer>
+<footer><div class="wrap">© 2026 정규연 · 팀 프로젝트의 그래픽·레벨 자산은 각 담당 팀원의 작업입니다. 림 더 스파이어와 림토체스는 Project Moon「림버스 컴퍼니」의 비공식·비상업 팬게임입니다.</div></footer>
 
 <dialog id="zoom" aria-label="확대 보기">
   <button type="button" id="zoomClose">닫기 ✕</button>
@@ -432,5 +622,20 @@ dialog button{position:fixed;top:calc(16px + env(safe-area-inset-top,0px));right
 })();
 </script>
 
+<script>
+// 도트 이미지는 화면 픽셀 기준 정수배로만 키운다(배율이 소수면 도트 크기가 들쭉날쭉해짐)
+(function(){
+  function fit(){
+    var dpr=window.devicePixelRatio||1;
+    document.querySelectorAll('img.dots').forEach(function(im){
+      var box=im.parentElement, w=+im.dataset.w, h=+im.dataset.h;
+      var s=Math.floor(Math.min(box.clientWidth*dpr/w, box.clientHeight*dpr/h));
+      if(!(s>=1)) s=1;
+      im.style.width=(w*s/dpr)+'px'; im.style.height=(h*s/dpr)+'px';
+    });
+  }
+  window.addEventListener('resize',fit); window.addEventListener('load',fit); fit();
+})();
+</script>
 </body>
 </html>
