@@ -50,7 +50,7 @@ nav a:hover,nav a:focus-visible{color:var(--fg)}
 .btn.primary{background:var(--accent);border-color:var(--accent);color:#1a0d05}
 .btn:focus-visible,button:focus-visible,a:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
 .shot{position:relative;border-radius:10px;overflow:hidden;border:1px solid var(--line);background:#000;cursor:zoom-in}
-.shot img{width:100%;aspect-ratio:16/9;object-fit:cover}
+.shot img{width:100%;height:auto;aspect-ratio:16/9;object-fit:cover}
 .shot .tag{position:absolute;top:10px;right:10px;font-size:12px;background:rgba(0,0,0,.6);padding:3px 8px;border-radius:4px;color:#ddd}
 .cap{margin-top:12px}
 .cap b{display:block}
@@ -102,6 +102,11 @@ section{padding-block:72px;border-top:1px solid var(--line)}
 .num span{font-size:12px;color:var(--dim);line-height:1.4;display:block}
 .thumbs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:10px}
 .thumbs .shot img{aspect-ratio:16/10}
+.media-note{margin-top:10px;color:var(--dim);font-size:12px;line-height:1.6}
+.art-preview{margin-top:14px;border:1px solid var(--line);border-radius:8px;padding:10px 12px}
+.art-preview summary{cursor:pointer;font-size:13px;color:var(--dim)}
+.art-preview .shot{margin:12px 0 0}
+.art-preview .shot img{aspect-ratio:4/3;object-fit:contain}
 .links{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
 @media (max-width:860px){.proj,.proj.flip{grid-template-columns:1fr}.proj.flip .media{order:0}.nums{grid-template-columns:repeat(2,minmax(0,1fr))}}
 
@@ -204,19 +209,19 @@ dialog button{position:fixed;top:calc(16px + env(safe-area-inset-top,0px));right
   <div class="wrap hero">
     <div>
       <div class="who"><b>정규연</b><span>게임 클라이언트 개발자</span></div>
-      <h1>끝까지 만들고.<br>직접 확인하고.<br><em>공개까지 합니다.</em></h1>
-      <p class="lead">Unreal C++로 게임 시스템을 짜고, 코드 리뷰와 회귀 테스트, 실측 대조로 동작을 확인합니다. Godot·웹 도구는 AI와 협업해 만들고, 직접 플레이하며 검증해 공개합니다.</p>
+      <h1>Unreal C++로<br>게임을 만들고,<br><em>끝까지 다듬습니다.</em></h1>
+      <p class="lead">드론의 조종부터 미션·전투·저장까지 게임이 돌아가는 구조를 만듭니다. C++와 언리얼을 주력으로 쓰고, Godot·Rust·웹 도구는 AI와 협업합니다. 프로젝트마다 제가 맡은 일과 확인한 범위를 함께 적었습니다.</p>
       <div class="cta">
         <a class="btn primary" href="#projects">대표 프로젝트 보기 ↓</a>
         <a class="btn" href="#contact">연락처</a>
       </div>
     </div>
     <div>
-      <figure class="shot" data-zoom="img/drone_v_mission.jpg" data-cap="미션 「골든 타임」 · 드랍 드론으로 제한 시간 안에 구급품 수송" tabindex="0" style="margin:0">
-        <img src="img/drone_v_mission.jpg" alt="사막 마을 위를 나는 드랍 드론과 미션 목표·타이머·기체 상태 HUD">
+      <figure class="shot" data-zoom="img/drone_title_20261120.jpg" data-cap="드로너 타이틀 · 2026-11-20 시연 영상에서 캡처한 실제 게임 화면" tabindex="0" style="margin:0">
+        <img src="img/drone_title_20261120.jpg" alt="DRONER 로고와 미션 메뉴, 사막 기지 위 드론이 보이는 실제 타이틀 화면" width="1244" height="700" fetchpriority="high">
         <span class="tag">클릭하여 확대</span>
       </figure>
-      <div class="cap"><b>드론 레이싱·미션 게임</b><span>졸업작품 · 팀 · Unreal Engine 5 C++</span></div>
+      <div class="cap"><b>드로너 (Droner)</b><span>졸업작품 · 팀 · Unreal Engine 5 C++ · 11월 20일 시연본</span></div>
     </div>
   </div>
 
@@ -243,7 +248,7 @@ dialog button{position:fixed;top:calc(16px + env(safe-area-inset-top,0px));right
         <div class="fact">
           <h4>기술</h4>
           <div class="row"><span class="k">주력</span><span class="chips"><span class="chip hot">C++</span><span class="chip hot">Unreal Engine 5</span><span class="chip">블루프린트</span></span></div>
-          <div class="row"><span class="k">AI 협업</span><span class="chips"><span class="chip">Godot 4 · GDScript</span><span class="chip">JavaScript</span><span class="chip">Python</span><span class="chip">C#</span></span></div>
+          <div class="row"><span class="k">AI 협업</span><span class="chips"><span class="chip">Godot 4 · GDScript</span><span class="chip">Rust</span><span class="chip">JavaScript</span><span class="chip">Python</span><span class="chip">C#</span></span></div>
           <div class="row"><span class="k">협업</span><span class="chips"><span class="chip">Git · GitHub</span><span class="chip">Figma</span></span></div>
           <div class="row"><span class="k">도구</span><span class="chips"><span class="chip">Blender</span><span class="chip">Claude</span><span class="chip">Codex</span></span></div>
         </div>
@@ -253,6 +258,7 @@ dialog button{position:fixed;top:calc(16px + env(safe-area-inset-top,0px));right
           <div class="row"><span class="k">2026</span><span>KATHARSIS · 심리공포 탈출 · Unreal</span></div>
           <div class="row"><span class="k">2026</span><span>림 더 스파이어 · 덱빌딩 로그라이크 · 개인</span></div>
           <div class="row"><span class="k">진행 중</span><span>림토체스 · 픽셀 오토배틀러 · 개인</span></div>
+          <div class="row"><span class="k">진행 중</span><span>DJÚP · 듀프 · 수직 콜로니심 · Rust 자체 엔진</span></div>
           <div class="row"><span class="k">진행 중</span><span>메시 작업실 · 2D 리깅 편집기 · 자체 렌더러</span></div>
           <div class="row"><span class="k">2026</span><span>발헤임 스트리머 라이브 서버 · 1개월 운영</span></div>
           <div class="row"><span class="k">2025</span><span>질서와 혼돈 · AI 대전 카드 게임 · Unreal</span></div>
@@ -294,10 +300,10 @@ dialog button{position:fixed;top:calc(16px + env(safe-area-inset-top,0px));right
           </div>
           <div class="role"><b>담당</b>프로그래밍 · 시스템 · 테스트</div>
           <div class="nums">
-            <div class="num"><b>6</b><span>역할이 다른 기체</span></div>
-            <div class="num"><b>28</b><span>회귀 테스트 통과</span></div>
-            <div class="num"><b>15/15</b><span>맵 연결 검사</span></div>
-            <div class="num"><b>17</b><span>맵 실측 대조</span></div>
+            <div class="num"><b>C++</b><span>비행·미션 시스템</span></div>
+            <div class="num"><b>RC</b><span>실제 조종기 입력</span></div>
+            <div class="num"><b>Data Asset</b><span>미션 목표·진행 관리</span></div>
+            <div class="num"><b>Seed</b><span>개인 확장 도시 생성</span></div>
           </div>
         </div>
       </article>
@@ -306,7 +312,7 @@ dialog button{position:fixed;top:calc(16px + env(safe-area-inset-top,0px));right
         <div class="detail"><span class="mono">MISSION</span><h4>데이터로 짜는 미션</h4><p>목표·필요 횟수·제한시간을 Data Asset으로 두고 Mission Director가 진행량을 평가합니다. 같은 처치 이벤트가 두 번 와도 한 번만 세고, 재출격해도 끝낸 목표는 유지됩니다.</p></div>
         <div class="detail"><span class="mono">COMBAT · AI</span><h4>전투와 적 AI</h4><p>StateTree로 순찰·추적·수색·엄폐를 나누고, Smart Object 예약으로 엄폐 자리가 겹치지 않게 했습니다. 재밍 구역에서는 링크가 끊기고 광섬유 드론만 영향을 받지 않습니다.</p></div>
         <div class="detail mine"><span class="mono">개인 확장</span><h4>시드 하나로 재현하는 랜덤 도시</h4><p>마스터 시드에서 도시·코스·날씨 시드를 나눠 서로의 난수를 건드리지 않게 했습니다. 건물은 HISM으로 묶고 생성을 여러 프레임에 나눠 멈춤을 줄였습니다.</p></div>
-        <div class="detail"><span class="mono">TEST · TEAM</span><h4>기획서와 구현을 같은 표로</h4><p>Figma 기획서를 구현 대조표로 바꿔 팀이 같은 화면을 보게 했습니다. 에디터를 화면 없이 띄워 미션 맵 17개의 배치와 수치를 뽑아 기획과 대조했습니다.</p></div>
+        <div class="detail"><span class="mono">TEST · TEAM</span><h4>기획서와 구현을 같은 표로</h4><p>Figma 기획서를 구현 대조표로 정리해 목표·배치·화면이 기획과 맞는지 확인했습니다. 팀의 기본 레이싱 맵과 개인 확장인 랜덤 도시를 구분하고, 조작·미션 재시작·화면 전환을 점검했습니다.</p></div>
       </div>
 
       <!-- 림 더 스파이어 -->
@@ -354,24 +360,69 @@ dialog button{position:fixed;top:calc(16px + env(safe-area-inset-top,0px));right
       <!-- 림토체스 -->
       <article class="proj flip">
         <div class="media">
-          <figure class="shot" data-zoom="img/limto.jpg" data-cap="림토체스 전투 화면" tabindex="0" style="margin:0"><img src="img/limto.jpg" alt="림토체스 좌우 대치 전투 화면" loading="lazy"><span class="tag">클릭하여 확대</span></figure>
+          <figure class="shot" data-zoom="img/limto_battle.jpg" data-cap="19라운드 자동 전투 · 9 대 8 교전 (2026-11-19 실행 화면)" tabindex="0" style="margin:0"><img src="img/limto_battle.jpg" alt="좌우로 마주 선 픽셀 기물들이 교전하는 림토체스 전투 화면" loading="lazy"><span class="tag">클릭하여 확대</span></figure>
+          <div class="thumbs">
+            <figure class="shot" data-zoom="img/limto_prep.jpg" data-cap="배치 준비 · 유리 너머로 상대 보드 미리보기" tabindex="0" style="margin:0"><img src="img/limto_prep.jpg" alt="전투 전 기물 배치 준비 화면" loading="lazy"></figure>
+            <figure class="shot" data-zoom="img/limto_result.jpg" data-cap="라운드 승리와 정산" tabindex="0" style="margin:0"><img src="img/limto_result.jpg" alt="승리 띠가 뜬 정산 화면" loading="lazy"></figure>
+            <figure class="shot" data-zoom="img/limto_room.jpg" data-cap="멀티플레이 · 6자리 방 코드로 만들기·입장" tabindex="0" style="margin:0"><img src="img/limto_room.jpg" alt="6자리 방 코드를 입력하는 멀티플레이 창" loading="lazy"></figure>
+          </div>
         </div>
         <div>
           <div class="meta mono">개인 프로젝트 · 진행 중 · 팬게임 · AI 협업</div>
           <h3>림토체스</h3>
-          <p class="sub">림버스 컴퍼니 팬게임 · 좌우 대치형 픽셀 오토배틀러 · Godot 4</p>
+          <p class="sub">림버스 컴퍼니 팬게임 · 좌우 대치형 픽셀 오토배틀러 · Godot 4 · 최대 8인</p>
           <div class="body">
-            <p>「림버스 컴퍼니」의 인격들을 롤토체스 방식의 오토배틀러로 옮기는 팬게임입니다. 소속·전투 방식·직업 세 갈래 시너지가 겹치는 조합 설계와, 원작 SD 그림을 기준으로 새로 찍은 도트 기물이 좌우로 마주 보고 싸우는 연출을 구현하고 싶었습니다.</p>
-            <p>상점 구매, 배치, 자동 전투, 정산이 돌아가는 상태입니다. 롤토체스 시너지 구조를 조사해 원거리 비율, 역할 5종, 코스트 분배를 표로 검산하며 기물 58종을 짜고 있습니다.</p>
-            <p>AI가 낸 명단이 원작 무기와 맞지 않으면 다시 묻고 기준을 정합니다. 그 과정을 유튜브 쇼츠 개발일지로 연재합니다.</p>
+            <p>「림버스 컴퍼니」의 인격들을 롤토체스 방식의 오토배틀러로 옮기는 팬게임입니다. 소속·전투 방식·직업 세 갈래 시너지가 겹치는 조합 설계와, 원작 SD 그림을 기준으로 새로 찍은 도트 기물이 좌우로 마주 보고 싸우는 연출을 구현하고 있습니다.</p>
+            <p>상점 구매, 배치, 자동 전투, 정산, 시너지·스킬, 저장·재개가 돌아가고, 같은 PC에서 2~8인 멀티(봇 채우기 포함)와 재접속까지 확인했습니다. 멀티는 방장이 배치·시드 같은 확정 입력만 보내고 각 PC가 같은 전투를 재생하는 방식이라, 전투 중 틱을 계속 주고받지 않습니다.</p>
+            <p>AI가 낸 기물 명단이나 모션이 원작과 다르면 원작 SD를 기준으로 다시 짜게 하고, 수치 검사를 통과해도 화면에서 발이 튀면 반려합니다. 공개 중계 연결은 같은 PC의 두 프로세스로 확인했고, EOS 연동·방장 승계 후보는 본체 반영 전입니다. 다른 PC·다른 회선의 최종 검증은 남아 있습니다.</p>
           </div>
-          <div class="role"><b>내 역할</b>기획 · 밸런스 기준 · 플레이 검수 (코드 작성은 AI 협업)</div>
+          <div class="role"><b>내 역할</b>기획 · 밸런스 기준 · 작업 분배 · 화면 검수와 반려 (코드 작성은 AI 협업)</div>
+          <div class="nums">
+            <div class="num"><b>58</b><span>현재 등록 기물</span></div>
+            <div class="num"><b>24</b><span>현재 데이터 시너지</span></div>
+            <div class="num"><b>8인</b><span>같은 PC 멀티 확인</span></div>
+          </div>
           <div class="links"><a class="btn" href="https://youtube.com/shorts/OKJFkKbpLTc" target="_blank" rel="noopener">개발일지 1편 ↗</a></div>
         </div>
       </article>
 
-      <!-- 질서와 혼돈 -->
+      <!-- DJÚP · 듀프 -->
       <article class="proj">
+        <div class="media">
+          <figure class="shot" data-zoom="img/djup_town_20261121.png" data-cap="NPC 자율 마을 시험 · 31일차의 천막·거처·작업대 (2026-11-21 실제 실행 화면)" tabindex="0" style="margin:0"><img src="img/djup_town_20261121.png" alt="주민들이 모인 거처와 작업대, 31일차 HUD가 보이는 듀프의 실제 마을 시험 화면" width="1280" height="720" loading="lazy"><span class="tag">실행 화면 · 클릭하여 확대</span></figure>
+          <div class="thumbs">
+            <figure class="shot" data-zoom="img/djup_l2.jpg" data-cap="2층 버섯숲 · 층마다 다른 생태" tabindex="0" style="margin:0"><img src="img/djup_l2.jpg" alt="거대 버섯이 가득한 2층 지형" loading="lazy"></figure>
+            <figure class="shot" data-zoom="img/djup_l5.jpg" data-cap="5층 갈래굴" tabindex="0" style="margin:0"><img src="img/djup_l5.jpg" alt="5층 갈래굴 지형" loading="lazy"></figure>
+            <figure class="shot" data-zoom="img/djup_trade.jpg" data-cap="자율 독립 탐사자 · 채집·공동 조사·물물교환 기록" tabindex="0" style="margin:0"><img src="img/djup_trade.jpg" alt="독립 탐사자 명부와 주민 정보 창" loading="lazy"></figure>
+          </div>
+          <p class="media-note">위 이미지는 실행 화면입니다. 최신 소스의 모든 변경이 이 시연 빌드에 포함된 것은 아닙니다.</p>
+          <details class="art-preview">
+            <summary>아트 방향 시안 12장 보기 · 게임 화면과 별도</summary>
+            <figure class="shot" data-zoom="img/djup_art_concepts_20261121.png" data-cap="듀프 아트 방향 시안 12장 · 구덩이 입구, 마을, 캠프, 층별 분위기를 위한 컨셉 이미지 · 실제 게임 화면 아님" tabindex="0"><img src="img/djup_art_concepts_20261121.png" alt="구덩이 입구와 지상 마을, 지하 캠프, 층별 분위기를 정리한 도트 아트 컨셉 12장" width="1680" height="1260" loading="lazy"><span class="tag">아트 시안</span></figure>
+          </details>
+        </div>
+        <div>
+          <div class="meta mono">개인 프로젝트 · 진행 중 · AI 협업</div>
+          <h3>DJÚP · 듀프</h3>
+          <p class="sub">수직 콜로니 시뮬레이션 · Rust 자체 엔진 (bevy_ecs · wgpu · egui) · 2026-11 시작</p>
+          <div class="body">
+            <p>바닥을 모르는 거대한 구덩이를 한 층씩 내려가며 층마다 캠프를 세우는 쿼터뷰 도트 콜로니심입니다. 깊이 내려갈수록 얻는 게 많지만, 몸이 깊이에 적응해 올라올 때 값을 치르는(상승병) 규칙을 중심에 뒀습니다.</p>
+            <p>"맵은 넓게, 주민 AI는 좋게, 그래서 최적화"를 방향으로 잡았습니다. 맵을 넓히자 길찾기가 틱 시간 대부분을 차지해, 가까운 길은 여러 스레드로·먼 길은 틱 예산으로 나눠 풀고 실패한 경로는 잠시 기억해 재탐색 폭주를 막았습니다. 층 지도 생성도 게임 틱 밖 스레드로 옮겼습니다.</p>
+            <p>고용하지 않은 주민도 채집·식사·수면·물물교환·아래층 조사를 이어 가도록 만들고 있습니다. NPC만 있는 마을 시험에서 거처와 작업대가 늘어나는 모습을 확인했고, 연구·화로 건설·장비 제작으로 이어지는 생활 흐름도 연결하고 있습니다.</p>
+            <p>현재는 주민의 자가 건축과 생계 판단, 장시간 시뮬레이션·저장 후 재개의 안정성을 보완하는 단계입니다. 건축 동선 막힘과 굶주림, 일부 저장 재현 차이는 남은 과제로 관리합니다.</p>
+          </div>
+          <div class="role"><b>내 역할</b>세계관·핵심 규칙 기획 · 성능 목표 · 담당 분담 · 실행 화면과 저장 결과 검수 (Rust 코드는 AI 협업)</div>
+          <div class="nums">
+            <div class="num"><b>1–5층</b><span>현재 구성 · 심층 확장 예정</span></div>
+            <div class="num"><b>NPC</b><span>자율 생계·거래·탐사</span></div>
+            <div class="num"><b>Build</b><span>연구·건설·제작 연결</span></div>
+            <div class="num"><b>Rust</b><span>자체 시뮬레이션 엔진</span></div>
+          </div>
+        </div>
+      </article>
+
+      <!-- 질서와 혼돈 -->
+      <article class="proj flip">
         <div class="media">
           <figure class="shot" data-zoom="img/oc_play.jpg" data-cap="질서와 혼돈 플레이 화면" tabindex="0" style="margin:0"><img src="img/oc_play.jpg" alt="질서와 혼돈 플레이 화면" loading="lazy"><span class="tag">클릭하여 확대</span></figure>
         </div>
@@ -388,12 +439,17 @@ dialog button{position:fixed;top:calc(16px + env(safe-area-inset-top,0px));right
       </article>
 
       <!-- 메시 작업실 -->
-      <article class="proj flip">
+      <article class="proj">
         <div class="media">
-          <figure class="shot" data-zoom="img/l2d_model.jpg" data-cap="자체 렌더러 출력 · 46레이어 · 23디포머" tabindex="0" style="margin:0"><img src="img/l2d_model.jpg" alt="자체 렌더러로 그린 2D 캐릭터 모델 정면" loading="lazy"><span class="tag">클릭하여 확대</span></figure>
-          <div class="thumbs">
-            <figure class="shot" data-zoom="img/l2d_editor.jpg" data-cap="편집기 화면 · 레이어 · 디포머 · 파라미터 패널 (시험 원화)" tabindex="0" style="margin:0"><img src="img/l2d_editor.jpg" alt="레이어·디포머·파라미터 패널이 있는 편집기 화면" loading="lazy"></figure>
+          <div class="panel">
+            <div><span class="mono">2D RIGGING EDITOR · ELECTRON</span><h4>파츠에서 시작해<br>움직이는 문서까지</h4></div>
+            <ol>
+              <li><b>01</b>PSD·PNG 가져오기 → 레이어·메시 편집</li>
+              <li><b>02</b>회전·워프 계층 → 파라미터 키폼 연결</li>
+              <li><b>03</b>타임라인·물리 → 재생·저장·출력</li>
+            </ol>
           </div>
+          <p class="media-note">캐릭터 모델은 머리카락과 표정 보정 중입니다. 모델 이미지와 시연은 마감 검수 후 공개합니다.</p>
         </div>
         <div>
           <div class="meta mono">개인 프로젝트 · 진행 중 · AI 협업</div>
@@ -401,20 +457,21 @@ dialog button{position:fixed;top:calc(16px + env(safe-area-inset-top,0px));right
           <p class="sub">2D 메시 리깅 편집기 · 자체 렌더러 · moc3 변환기 · Electron</p>
           <div class="body">
             <p>Live2D 방식의 2D 리깅 편집기와 렌더러를 처음부터 구현하고 있습니다. PSD 레이어를 가져와 메시 정점·삼각형을 만들고, 회전·워프 디포머 계층에 연결한 뒤 파라미터 축별 키폼을 보간해 화면에 그립니다. 모션 타임라인, 진자 물리, 마스크·합성도 같은 문서 형식 안에서 편집합니다.</p>
-            <p>편집한 문서는 공식 런타임 형식(moc3 · model3 · physics3 · motion3)으로 변환합니다. 자체 렌더 결과와 변환 파일을 같은 자세로 그려 정점 위치를 비교하고, 뒤집히거나 퇴화한 삼각형이 없는지 검사합니다.</p>
+            <p>Electron 제작실에서 모델을 편집하고, 재생·Undo·저장이 같은 문서에 적용되게 만들었습니다. 지원 범위 안에서 moc3 · model3 · physics3 · motion3로 내보내는 변환기도 개발하고 있습니다. 자체 렌더와 변환 결과의 정점·삼각형 검사를 구분해 확인합니다.</p>
+            <p>현재는 머리카락 가림 순서와 각도별 변형, 표정 전환을 다듬고 있습니다. 편집기 기능 개발과 캐릭터 모델의 시각적 완성도는 따로 검수합니다.</p>
           </div>
           <div class="role"><b>내 역할</b>구조 설계 · 작업 분배 · 렌더·변환 결과 검수 (코드는 AI 협업)</div>
           <div class="nums">
-            <div class="num"><b>0.065</b><span>변환 최대 오차(px)</span></div>
-            <div class="num"><b>0</b><span>뒤집힌·퇴화 삼각형</span></div>
-            <div class="num"><b>46</b><span>모델 레이어</span></div>
-            <div class="num"><b>23</b><span>회전·워프 디포머</span></div>
+            <div class="num"><b>Mesh</b><span>정점·삼각형 편집</span></div>
+            <div class="num"><b>Warp</b><span>계층·키폼 보간</span></div>
+            <div class="num"><b>Motion</b><span>타임라인·물리</span></div>
+            <div class="num"><b>Undo</b><span>문서 편집·복구</span></div>
           </div>
         </div>
       </article>
 
       <!-- 발헤임 라이브 서버 -->
-      <article class="proj">
+      <article class="proj flip">
         <div class="media">
           <div class="panel">
             <div><span class="mono">LIVE SERVICE · 2026.10–11</span><h4>장애는 기록으로 좁히고,<br>검증한 뒤에 반영한다</h4></div>
@@ -550,14 +607,14 @@ dialog button{position:fixed;top:calc(16px + env(safe-area-inset-top,0px));right
       <h2 class="sec-title">방향은 제가 잡고, 결과는 직접 확인합니다</h2>
       <p class="sec-lead">AI에게 일을 통째로 맡기지 않습니다. 무엇을 만들지, 어떤 구조로 갈지, 어디까지 되면 끝인지는 직접 만들며 겪은 경험을 바탕으로 제가 정하고, AI에게는 그 기준 안에서 구현을 맡깁니다. AI는 그럴듯한 수정안을 빠르게 내지만 A를 고치다 B가 깨지는 일은 그대로 일어나므로, 결과는 미리 정한 방법으로 확인합니다.</p>
       <div class="flow">
-        <div class="step"><b>1</b><h4>방향 정하기</h4><p>기능의 구조와 데이터 형식, 완료 기준을 제 판단으로 먼저 정합니다. 그 기준대로 일을 쪼개 코드는 Claude, 자료 조사·문서 검토는 Codex에 나눠 맡깁니다.</p></div>
+        <div class="step"><b>1</b><h4>방향 정하기</h4><p>기능의 구조와 데이터 형식, 완료 기준을 먼저 정합니다. 작업을 나누고, Claude·Codex와 구현·자료 조사·검토를 진행합니다.</p></div>
         <div class="step"><b>2</b><h4>영향 범위 보기</h4><p>AI가 만든 변경에서 바뀐 함수가 어디서 불리는지, 저장·화면·네트워크까지 닿는지 확인합니다. C++ 코드는 직접 읽고 리뷰합니다.</p></div>
         <div class="step"><b>3</b><h4>관련 검증 돌리기</h4><p>영향받는 기능의 회귀 테스트와 연결 검사를 골라 돌리고, 실제 실행 화면이나 영상으로 한 번 더 봅니다.</p></div>
         <div class="step"><b>4</b><h4>승인 후 반영</h4><p>통과한 것만 원본을 백업한 뒤 반영합니다. 실패하면 원인을 붙여 다시 맡기고, 같은 검증을 반복합니다.</p></div>
       </div>
       <h4 class="sub-h">AI 결과를 제 기준으로 되돌린 순간</h4>
       <div class="details">
-        <div class="detail"><span class="mono">메시 작업실</span><h4>수치는 통과, 화면은 불합격</h4><p>변환 오차와 삼각형 검사를 모두 통과한 모델을 연속 재생으로 보니 목과 머리가 떠 보였습니다. 반려 후 목 디포머가 머리 기울기를 따라가지 않는 원인을 찾아 고쳤고, 피부점 흔들림을 4.19px에서 0.006px로 줄였습니다.</p></div>
+        <div class="detail"><span class="mono">메시 작업실</span><h4>수치는 통과, 화면은 불합격</h4><p>변환 오차와 삼각형 검사만으로는 목과 머리가 떠 보이거나 머리카락이 얼굴을 뚫는 문제를 잡지 못했습니다. 실제 편집기에서 각도와 표정 전환을 재생해 보고, 가림 순서·연결 위치·키폼을 따로 확인하도록 검수 기준을 바꿨습니다.</p></div>
         <div class="detail"><span class="mono">발헤임 서버</span><h4>그럴듯한 원인을 보류</h4><p>"보스가 안 보였다"는 신고에 연결 장애라는 설명이 쉽게 나왔지만, 보스 생성 기록이 없어 원인을 확정하지 않았습니다. 같은 오류가 패치 이전에도 있었다는 근거로 패치 탓도 배제했습니다.</p></div>
         <div class="detail"><span class="mono">림토체스</span><h4>데이터가 원작과 다를 때</h4><p>AI가 낸 기물 명단의 무기와 역할이 원작 설정과 맞지 않는 것을 확인하고, 기준 자료를 정해 다시 짜게 했습니다. 원거리 비율과 코스트 분배는 표로 직접 검산합니다.</p></div>
       </div>
