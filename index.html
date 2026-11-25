@@ -119,7 +119,9 @@ section{padding-block:72px;border-top:1px solid var(--line)}
 @media (max-width:860px){.panel{aspect-ratio:auto}}
 
 /* 드론 상세 카드 */
-.details{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:14px;margin-top:28px}
+.details{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:28px}
+@media(max-width:860px){.details{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:560px){.details{grid-template-columns:1fr}}
 .detail{padding:20px;border-radius:10px;background:var(--card);border:1px solid var(--line);display:flex;flex-direction:column;gap:8px}
 .detail .mono{font-size:12px;color:var(--faint)}
 .detail h4{margin:0;font-size:18px}
@@ -210,7 +212,7 @@ dialog button{position:fixed;top:calc(16px + env(safe-area-inset-top,0px));right
     <div>
       <div class="who"><b>정규연</b><span>게임 클라이언트 개발자</span></div>
       <h1>Unreal C++로<br>게임을 만들고,<br><em>끝까지 다듬습니다.</em></h1>
-      <p class="lead">드론의 조종부터 미션·전투·저장까지 게임이 돌아가는 구조를 만듭니다. C++와 언리얼을 주력으로 쓰고, Godot·Rust·웹 도구는 AI와 협업합니다. 프로젝트마다 제가 맡은 일과 확인한 범위를 함께 적었습니다.</p>
+      <p class="lead">Unreal C++로 조작, 미션 진행, UI와 저장 기능을 만듭니다. 같은 입력인데 기체 자세가 달라지거나 저장 후 진행이 어긋나는 문제를 다뤄 왔습니다. 구현한 기능과 그 구조를 고른 이유를 함께 정리했습니다.</p>
       <div class="cta">
         <a class="btn primary" href="#projects">대표 프로젝트 보기 ↓</a>
         <a class="btn" href="#contact">연락처</a>
@@ -228,13 +230,13 @@ dialog button{position:fixed;top:calc(16px + env(safe-area-inset-top,0px));right
   <section id="about">
     <div class="wrap">
       <div class="eyebrow mono">ABOUT</div>
-      <h2 class="sec-title">구현을 맡고, 될 때까지 확인하는 사람</h2>
+      <h2 class="sec-title">만들어 온 게임과 맡았던 일</h2>
       <div class="about">
         <div class="photo"><img src="img/profile.jpg" alt="정규연 증명사진"></div>
         <div class="intro">
           <h3><small>정규연 · Jeong Gyuyeon</small>게임 클라이언트 개발자입니다.</h3>
-          <p>졸업작품 드론 게임에서 프로그래밍·시스템·테스트를 맡았습니다. AI와 협업해 덱빌딩 로그라이크를 끝까지 만들어 itch.io에 공개했고, 지금은 픽셀 오토배틀러를 만들며 과정을 유튜브에 올리고 있습니다.</p>
-          <p>스트리머 합동 방송용 발헤임 서버를 후원과 연동해 한 달 동안 운영하면서, 같이 하는 게임은 끊기지 않고 아무것도 잃지 않는 환경까지 만들어야 재미있다는 걸 배웠습니다.</p>
+          <p>2인 팀 공포게임 KATHARSIS에서는 상호작용과 퍼즐, 인벤토리, 저장 기능을 맡았습니다. 졸업작품 드로너에서는 실제 RC 조종기 입력부터 비행 제어와 미션 진행까지 구현했습니다. 주력은 Unreal C++이며, Godot·Rust·웹 프로젝트는 AI와 협업해 기획과 검수도 함께 맡았습니다.</p>
+          <p>덱빌딩 게임 림 더 스파이어는 itch.io에 공개했습니다. 발헤임 합동 방송 서버를 한 달 운영하면서는 기능을 추가하는 일뿐 아니라 구매 기록을 보존하고, 문제가 생긴 시점의 로그와 저장본을 대조하는 일도 맡았습니다.</p>
         </div>
       </div>
 
@@ -266,9 +268,9 @@ dialog button{position:fixed;top:calc(16px + env(safe-area-inset-top,0px));right
       </div>
 
       <div class="traits">
-        <div class="trait"><span class="mono">FINISH</span><h4>끝까지 만듭니다</h4><p>전투부터 저장까지 한 판이 완결되는 웹 빌드를 itch.io에 공개했습니다.</p></div>
-        <div class="trait"><span class="mono">VERIFY</span><h4>직접 확인합니다</h4><p>수정할 때마다 코드 리뷰로 변경 범위와 영향을 점검하고, 회귀 테스트·연결 검사를 돌린 뒤 맵 수치를 기획서와 대조합니다.</p></div>
-        <div class="trait"><span class="mono">TOGETHER</span><h4>같이 하는 걸 만듭니다</h4><p>후원 연동 라이브 서버를 한 달 운영하며 잠금 충돌·후원 누락 같은 장애를 로그로 좁혀 고쳤습니다.</p></div>
+        <div class="trait"><span class="mono">PLAYABLE BUILD</span><h4>직접 플레이할 수 있는 결과물</h4><p>전투, 보상, 다음 지역 선택과 저장까지 이어지는 림 더 스파이어 웹 빌드를 공개했습니다.</p></div>
+        <div class="trait"><span class="mono">REPRODUCTION</span><h4>같은 조건으로 다시 확인하기</h4><p>랜덤 도시의 시드, 전투 시작 배치, 조작 모드를 구분해 기록합니다. 수정 전후를 비교할 때 조건이 달라지지 않도록 하기 위해서입니다.</p></div>
+        <div class="trait"><span class="mono">LIVE OPS</span><h4>운영 중인 환경에서의 수정</h4><p>방송에 쓰는 서버의 상점 멈춤과 후원 누락을 조사했습니다. 수정본을 별도로 검사하고 구매 기록과 백업을 대조한 뒤 반영했습니다.</p></div>
       </div>
     </div>
   </section>
@@ -276,8 +278,8 @@ dialog button{position:fixed;top:calc(16px + env(safe-area-inset-top,0px));right
   <section id="projects">
     <div class="wrap">
       <div class="eyebrow mono">SELECTED PROJECTS</div>
-      <h2 class="sec-title">직접 짜고, 확인한 프로젝트</h2>
-      <p class="sec-lead">맡은 범위와 실제 화면을 함께 정리했습니다. 팀 프로젝트는 제가 한 일만 적었습니다.</p>
+      <h2 class="sec-title">주요 프로젝트</h2>
+      <p class="sec-lead">실제 화면과 함께 담당 범위, 구현 방식, 아직 남은 작업을 적었습니다.</p>
 
       <!-- 드론 -->
       <article class="proj">
@@ -296,23 +298,24 @@ dialog button{position:fixed;top:calc(16px + env(safe-area-inset-top,0px));right
           <p class="sub">Unreal Engine 5 · C++ · 블루프린트 · 2026</p>
           <div class="body">
             <p>훈련, 게이트 레이스, 물자 투하와 전투 미션을 드론으로 수행하는 게임입니다. 기획·레벨·UI/UX·모델링 담당 팀원과 함께 만들었습니다.</p>
-            <p>각속도 기반 비행 모델과 조작 보조, 데이터로 짜는 미션 시스템, 적 AI와 무기를 구현했고, 테스트를 맡아 수정할 때마다 코드 리뷰와 회귀 테스트로 기존 기능이 깨지지 않았는지 확인했습니다.</p>
+            <p>비행 제어와 조작 보조, 미션 진행, 적 AI와 무기를 맡았습니다. 규칙은 C++로 구현하고 기체별 수치와 미션 조건은 Data Asset에서 조정하도록 나눴습니다. 키보드, 게임패드와 실제 RC 조종기를 지원합니다.</p>
           </div>
           <div class="role"><b>담당</b>프로그래밍 · 시스템 · 테스트</div>
           <div class="nums">
             <div class="num"><b>C++</b><span>비행·미션 시스템</span></div>
             <div class="num"><b>RC</b><span>실제 조종기 입력</span></div>
-            <div class="num"><b>Data Asset</b><span>미션 목표·진행 관리</span></div>
+            <div class="num"><b>Data Asset</b><span>미션 데이터</span></div>
             <div class="num"><b>Seed</b><span>개인 확장 도시 생성</span></div>
           </div>
         </div>
       </article>
       <div class="details">
-        <div class="detail"><span class="mono">FLIGHT</span><h4>실제 드론처럼 나는 비행</h4><p>스틱 입력을 목표 각속도로 바꾸고 추력·중력·항력을 매 프레임 적분합니다. FPV는 Acro·Horizon, 정찰·투하 기체는 속도·제동 보조를 고릅니다. 키보드·게임패드·RC 조종기를 지원합니다.</p></div>
-        <div class="detail"><span class="mono">MISSION</span><h4>데이터로 짜는 미션</h4><p>목표·필요 횟수·제한시간을 Data Asset으로 두고 Mission Director가 진행량을 평가합니다. 같은 처치 이벤트가 두 번 와도 한 번만 세고, 재출격해도 끝낸 목표는 유지됩니다.</p></div>
-        <div class="detail"><span class="mono">COMBAT · AI</span><h4>전투와 적 AI</h4><p>StateTree로 순찰·추적·수색·엄폐를 나누고, Smart Object 예약으로 엄폐 자리가 겹치지 않게 했습니다. 재밍 구역에서는 링크가 끊기고 광섬유 드론만 영향을 받지 않습니다.</p></div>
-        <div class="detail mine"><span class="mono">개인 확장</span><h4>시드 하나로 재현하는 랜덤 도시</h4><p>마스터 시드에서 도시·코스·날씨 시드를 나눠 서로의 난수를 건드리지 않게 했습니다. 건물은 HISM으로 묶고 생성을 여러 프레임에 나눠 멈춤을 줄였습니다.</p></div>
-        <div class="detail"><span class="mono">TEST · TEAM</span><h4>기획서와 구현을 같은 표로</h4><p>Figma 기획서를 구현 대조표로 정리해 목표·배치·화면이 기획과 맞는지 확인했습니다. 팀의 기본 레이싱 맵과 개인 확장인 랜덤 도시를 구분하고, 조작·미션 재시작·화면 전환을 점검했습니다.</p></div>
+        <div class="detail"><span class="mono">FLIGHT</span><h4>프레임에 따라 달라지던 기체 회전 보정</h4><p>여러 축을 동시에 조작하면 프레임레이트에 따라 기체 자세가 달라지는 문제가 있었습니다. 목표 각속도의 응답을 시간 구간에 맞춰 적분하고, 회전량을 쿼터니언으로 합성하도록 바꿨습니다. Acro 모드의 각속도 조작과 자동 수평 복귀가 있는 자세 모드는 별도로 다룹니다.</p></div>
+        <div class="detail"><span class="mono">MISSION</span><h4>미션 정의와 실행 상태를 나눈 이유</h4><p>목표 종류와 횟수, 제한시간은 Data Asset에 두고 Mission Director가 현재 진행을 판정합니다. 기체를 다시 출격시킬 때는 드론을 새로 연결하되 완료한 목표는 유지합니다. 처치 이벤트가 중복으로 들어오는 경우에는 이미 집계한 대상을 확인해 진행량이 두 번 오르지 않게 했습니다.</p></div>
+        <div class="detail"><span class="mono">DAMAGE</span><h4>직격과 폭발 피해의 중복 방지</h4><p>충돌한 대상에는 직접 피해를 주고, 그 대상은 범위 피해 목록에서 제외합니다. 폭발 처리에 들어갈 때 먼저 처리 완료 상태를 확정해, 충돌이나 피해 이벤트가 다시 들어와도 같은 폭발을 반복하지 않도록 했습니다.</p></div>
+        <div class="detail"><span class="mono">CAMERA</span><h4>광각 카메라의 모서리 관통 보정</h4><p>광각 카메라가 기울어지면 화면 모서리가 카메라 중심보다 지형에 먼저 닿을 수 있습니다. 투영행렬로 화면 앞쪽 검사 영역을 구해 SpringArm 충돌 반경에 반영했습니다. 피격 흔들림으로 카메라가 이동하는 범위도 검사 여유에 포함합니다.</p></div>
+        <div class="detail"><span class="mono">ENEMY AI</span><h4>엄폐할 장소를 찾는 일과 차지하는 일</h4><p>StateTree로 순찰, 추적, 수색과 엄폐 상태를 나눴습니다. 여러 NPC가 같은 엄폐 지점을 고를 수 있어 Smart Object 예약으로 사용 중인 자리를 구분합니다. 이동 판단과 자리 예약을 함께 다뤄 한 지점으로 몰리는 상황을 줄이도록 구성했습니다.</p></div>
+        <div class="detail mine"><span class="mono">개인 확장 · PROCEDURAL</span><h4>도시 생성의 재현성과 처리 비용</h4><p>도시, 코스와 날씨의 난수 흐름을 분리해 한쪽 설정을 바꿔도 다른 쪽 난수 소비에 바로 영향을 주지 않게 했습니다. 같은 설정과 버전에서는 시드로 문제 장면을 재현합니다. 반복 건물은 HISM으로 묶고 생성 단계를 여러 틱으로 나눴지만, 단계 하나의 처리 시간은 계속 확인해야 합니다.</p></div>
       </div>
 
       <!-- 림 더 스파이어 -->
@@ -325,9 +328,9 @@ dialog button{position:fixed;top:calc(16px + env(safe-area-inset-top,0px));right
           <h3>림 더 스파이어</h3>
           <p class="sub">림버스 컴퍼니 팬게임 · 덱빌딩 로그라이크 · Godot 4 · 2026</p>
           <div class="body">
-            <p>Project Moon의 「림버스 컴퍼니」를 덱빌딩 로그라이크로 옮긴 팬게임입니다. 원작의 출혈·화상·진동·파열·침잠·호흡 같은 상태 효과를 카드 규칙으로 다시 짜고, 원작의 던전 탐사처럼 층을 내려가며 길을 고르는 원정 지도를 구현하는 것이 목표였습니다.</p>
-            <p>전투, 카드 강화, 보상, 원정 지도, 휴식과 이벤트, 저장까지 한 판이 완결되는 웹 빌드를 itch.io에 공개했습니다.</p>
-            <p>카드 수백 종을 데이터로 관리하고, 강화 뒤 효과가 겹치는 카드를 자동 테스트로 잡아 0건으로 유지했습니다. 플레이 피드백을 받아 화면 비율별 UI와 텍스트 길이에 흔들리지 않는 카드 레이아웃으로 고쳤습니다.</p>
+            <p>Project Moon의 「림버스 컴퍼니」를 소재로 만든 덱빌딩 로그라이크 팬게임입니다. 원작의 출혈, 화상 같은 상태 효과를 카드 전투 규칙에 맞게 다시 설계했습니다. 전투 후 보상을 고르고 지도의 다음 지역으로 이동하며 한 판을 진행합니다.</p>
+            <p>전투, 강화, 휴식과 이벤트, 저장을 연결한 웹 빌드를 itch.io에 공개했습니다. 카드 효과와 강화 전후의 동작을 대조하고, 설명이 긴 카드나 손패 수가 달라질 때 UI가 읽히는지 확인했습니다.</p>
+            <p>저장은 진행 중인 판과 프로필을 분리했습니다. 새 내용을 임시 파일에 쓴 뒤 형식을 확인하고 교체하며, 기존 정상 저장본은 백업으로 남깁니다. 저장 도중 문제가 생겼을 때 이전 판까지 잃지 않도록 하기 위한 구조입니다.</p>
           </div>
           <div class="role"><b>내 역할</b>기획 · 작업 분배 · 플레이 테스트와 검수 (코드 작성은 AI 협업)</div>
           <div class="links"><a class="btn primary" href="https://gyeonliz.itch.io/lim-the-spire" target="_blank" rel="noopener">itch.io에서 플레이 ↗</a></div>
@@ -349,13 +352,19 @@ dialog button{position:fixed;top:calc(16px + env(safe-area-inset-top,0px));right
           <h3>KATHARSIS</h3>
           <p class="sub">정신병원 탈출 심리공포 · Unreal Engine 5 C++ · 기획명 Fractured</p>
           <div class="body">
-            <p>상호작용, 인벤토리, 보관함, 저장, 설정 UI까지 C++ 클래스로 짰습니다. 퓨즈박스로 전력을 되살리고 키패드와 엘리베이터로 층을 옮기며, 모은 증거에 따라 노멀·트루 엔딩으로 갈립니다.</p>
-            <p>비밀번호는 레벨에 고정하지 않고 시작할 때 만듭니다. 방마다 시계 시각을 무작위로 정하고 그림 순서를 섞어, 공략을 외워도 다음 판에는 답이 바뀝니다.</p>
+            <p>단서를 모아 정신병원에서 탈출하는 1인칭 공포 퍼즐 게임입니다. 게임플레이 프로그래밍을 맡아 상호작용, 인벤토리와 보관함, 저장, 퍼즐과 설정 UI를 C++로 구현했습니다. 기획, 레벨 디자인과 시네마틱은 팀원이 맡았습니다.</p>
+            <p>퍼즐의 정답 생성, 단서 표시와 입력 판정이 서로 맞아야 했고, 다시 불러온 뒤에도 열린 문과 장치 상태가 이어져야 했습니다. 개별 오브젝트의 기능보다 이들이 같은 진행 상태를 읽도록 연결하는 데 신경 썼습니다.</p>
           </div>
           <div class="role"><b>담당</b>게임플레이 프로그래밍 · 2인 팀 (팀원: 기획 · 레벨 디자인 · 시네마틱)</div>
           <div class="links"><a class="btn primary" href="https://www.youtube.com/watch?v=UP75ZRN3y7k" target="_blank" rel="noopener">트레일러 ↗</a><a class="btn" href="https://www.youtube.com/watch?v=fLj8rgyWTPg" target="_blank" rel="noopener">플레이 영상 ↗</a><a class="btn" href="https://github.com/gyeonliz/Fractured" target="_blank" rel="noopener">소스 코드 (GitHub) ↗</a></div>
         </div>
       </article>
+
+      <div class="details">
+        <div class="detail"><span class="mono">INTERACTION</span><h4>문과 아이템을 같은 입력 경로로 연결</h4><p>카메라 방향의 Sphere Trace로 상호작용 대상을 찾고 공통 인터페이스를 호출합니다. 입력 컴포넌트가 모든 오브젝트의 종류를 알 필요 없이, 문이나 아이템이 자기 동작을 처리하도록 나눴습니다.</p></div>
+        <div class="detail"><span class="mono">PUZZLE</span><h4>정답을 한 번 만들고 모든 단서에 전달</h4><p>퍼즐 관리자가 방마다 시계 값을 정하고 그림 순서를 섞은 뒤 최종 비밀번호를 만듭니다. 시계, 쪽지와 컴퓨터 단서, 키패드가 같은 결과를 사용합니다. 정답과 표시를 따로 만들 때 생기는 불일치를 줄이기 위한 구조입니다.</p></div>
+        <div class="detail"><span class="mono">SAVEGAME</span><h4>플레이어와 월드 상태를 함께 저장</h4><p>SaveGame에 위치와 인벤토리뿐 아니라 보관함, 열린 문, 작동한 트리거와 엘리베이터 층을 함께 기록합니다. 불러온 뒤 물건이 다시 생기거나 장치가 초기 상태로 돌아가지 않도록 월드 상태를 저장 대상으로 나눴습니다.</p></div>
+      </div>
 
       <!-- 림토체스 -->
       <article class="proj flip">
@@ -372,9 +381,9 @@ dialog button{position:fixed;top:calc(16px + env(safe-area-inset-top,0px));right
           <h3>림토체스</h3>
           <p class="sub">림버스 컴퍼니 팬게임 · 좌우 대치형 픽셀 오토배틀러 · Godot 4 · 최대 8인</p>
           <div class="body">
-            <p>「림버스 컴퍼니」의 인격들을 롤토체스 방식의 오토배틀러로 옮기는 팬게임입니다. 소속·전투 방식·직업 세 갈래 시너지가 겹치는 조합 설계와, 원작 SD 그림을 기준으로 새로 찍은 도트 기물이 좌우로 마주 보고 싸우는 연출을 구현하고 있습니다.</p>
-            <p>상점 구매, 배치, 자동 전투, 정산, 시너지·스킬, 저장·재개가 돌아가고, 같은 PC에서 2~8인 멀티(봇 채우기 포함)와 재접속까지 확인했습니다. 멀티는 방장이 배치·시드 같은 확정 입력만 보내고 각 PC가 같은 전투를 재생하는 방식이라, 전투 중 틱을 계속 주고받지 않습니다.</p>
-            <p>AI가 낸 기물 명단이나 모션이 원작과 다르면 원작 SD를 기준으로 다시 짜게 하고, 수치 검사를 통과해도 화면에서 발이 튀면 반려합니다. 공개 중계 연결은 같은 PC의 두 프로세스로 확인했고, EOS 연동·방장 승계 후보는 본체 반영 전입니다. 다른 PC·다른 회선의 최종 검증은 남아 있습니다.</p>
+            <p>「림버스 컴퍼니」의 인격들을 기물로 구성한 좌우 대치형 픽셀 오토배틀러입니다. 상점에서 기물을 사고 배치한 뒤 자동 전투와 정산을 진행합니다. 소속과 전투 역할이 겹치는 조합을 설계하고, 원작 SD를 기준으로 도트 기물과 모션을 검수합니다.</p>
+            <p>전투 계산을 화면과 네트워크에서 분리했습니다. 방장이 확정한 배치와 시드를 각 PC가 받아 같은 전투를 계산하며, 그 입력은 전투 기록 재생에도 사용합니다. 기물 능력치와 태그는 데이터에서 읽고 전투 코드가 해석하도록 나눴습니다.</p>
+            <p>같은 PC의 여러 프로세스로 최대 8인 구성(봇 포함)과 재접속을 확인했습니다. 공개 중계도 같은 PC의 두 프로세스로 확인한 상태입니다. EOS 연동과 방장 승계 후보는 본체 반영 전이며, 다른 PC·다른 회선의 최종 검증은 남아 있습니다.</p>
           </div>
           <div class="role"><b>내 역할</b>기획 · 밸런스 기준 · 작업 분배 · 화면 검수와 반려 (코드 작성은 AI 협업)</div>
           <div class="nums">
@@ -385,6 +394,12 @@ dialog button{position:fixed;top:calc(16px + env(safe-area-inset-top,0px));right
           <div class="links"><a class="btn" href="https://youtube.com/shorts/OKJFkKbpLTc" target="_blank" rel="noopener">개발일지 1편 ↗</a></div>
         </div>
       </article>
+
+      <div class="details">
+        <div class="detail"><span class="mono">DETERMINISM</span><h4>같은 시드만으로 같은 전투가 되지는 않아서</h4><p>전투는 화면 FPS와 별도로 0.05초 간격의 고정 틱에서 계산합니다. 기물 ID로 처리 순서와 동률 판정 기준을 정해, 같은 시작 배치에서도 실행 순서 때문에 결과가 달라질 여지를 줄였습니다.</p></div>
+        <div class="detail"><span class="mono">BATTLE RECORD</span><h4>시작 배치로 다시 계산하는 전투 기록</h4><p>전투 기록에는 시드와 양쪽 시작 배치를 담고 같은 전투 계산기를 다시 실행합니다. 네트워크에서 받은 입력과 관전 화면의 재생 규칙이 따로 갈라지지 않도록 공통 계산 경로를 사용합니다.</p></div>
+        <div class="detail"><span class="mono">BALANCE</span><h4>수치 조정과 판정 변경을 구분</h4><p>기물 능력치와 소속 태그, 시너지 조건을 데이터로 관리합니다. 밸런스를 고칠 때는 데이터만 바꾸는 수정인지 전투 규칙까지 바꾸는 수정인지 먼저 나눕니다. 같은 전투 입력으로 결과를 비교할 수 있게 하는 것도 이 때문입니다.</p></div>
+      </div>
 
       <!-- DJÚP · 듀프 -->
       <article class="proj">
@@ -406,10 +421,9 @@ dialog button{position:fixed;top:calc(16px + env(safe-area-inset-top,0px));right
           <h3>DJÚP · 듀프</h3>
           <p class="sub">수직 콜로니 시뮬레이션 · Rust 자체 엔진 (bevy_ecs · wgpu · egui) · 2026-11 시작</p>
           <div class="body">
-            <p>바닥을 모르는 거대한 구덩이를 한 층씩 내려가며 층마다 캠프를 세우는 쿼터뷰 도트 콜로니심입니다. 깊이 내려갈수록 얻는 게 많지만, 몸이 깊이에 적응해 올라올 때 값을 치르는(상승병) 규칙을 중심에 뒀습니다.</p>
-            <p>"맵은 넓게, 주민 AI는 좋게, 그래서 최적화"를 방향으로 잡았습니다. 맵을 넓히자 길찾기가 틱 시간 대부분을 차지해, 가까운 길은 여러 스레드로·먼 길은 틱 예산으로 나눠 풀고 실패한 경로는 잠시 기억해 재탐색 폭주를 막았습니다. 층 지도 생성도 게임 틱 밖 스레드로 옮겼습니다.</p>
-            <p>고용하지 않은 주민도 채집·식사·수면·물물교환·아래층 조사를 이어 가도록 만들고 있습니다. NPC만 있는 마을 시험에서 거처와 작업대가 늘어나는 모습을 확인했고, 연구·화로 건설·장비 제작으로 이어지는 생활 흐름도 연결하고 있습니다.</p>
-            <p>현재는 주민의 자가 건축과 생계 판단, 장시간 시뮬레이션·저장 후 재개의 안정성을 보완하는 단계입니다. 건축 동선 막힘과 굶주림, 일부 저장 재현 차이는 남은 과제로 관리합니다.</p>
+            <p>거대한 구덩이를 층마다 탐사하고 캠프를 세우는 쿼터뷰 도트 콜로니 시뮬레이션입니다. 깊이 적응한 몸이 올라올 때 부담을 받는 상승병과, 고용하지 않은 주민도 스스로 살아가는 세계를 핵심 규칙으로 잡았습니다. 현재 1~5층을 구성하고 있으며 최하층은 확정하지 않았습니다.</p>
+            <p>Rust의 bevy_ecs로 주민과 작업 상태를 관리하고 wgpu로 화면을 그립니다. 많은 주민이 한꺼번에 길을 찾을 때의 비용과, 저장 후 주민 처리 순서가 바뀌는 문제를 함께 다루고 있습니다.</p>
+            <p>NPC만 있는 마을 시험에서 거처와 작업대가 늘어나는 모습을 확인했습니다. 현재 보완하는 부분은 건설 AI의 통로 확보와 생계 판단입니다. 장시간 시뮬레이션과 저장 후 재개에서 결과가 일관되게 이어지는지도 검증하고 있습니다.</p>
           </div>
           <div class="role"><b>내 역할</b>세계관·핵심 규칙 기획 · 성능 목표 · 담당 분담 · 실행 화면과 저장 결과 검수 (Rust 코드는 AI 협업)</div>
           <div class="nums">
@@ -421,6 +435,12 @@ dialog button{position:fixed;top:calc(16px + env(safe-area-inset-top,0px));right
         </div>
       </article>
 
+      <div class="details">
+        <div class="detail"><span class="mono">PATHFINDING</span><h4>길찾기 요청이 한 틱에 몰리는 문제</h4><p>주민 수가 늘면 화면을 그리는 일보다 이동 경로를 찾는 비용이 커졌습니다. 가까운 경로는 병렬로 계산하고, 긴 요청은 틱별 예산으로 나눕니다. 실패한 경로를 곧바로 반복 요청하지 않도록 기억해 같은 막힌 길을 계속 계산하는 낭비도 줄입니다.</p></div>
+        <div class="detail"><span class="mono">SAVE · REPLAY</span><h4>저장 후 달라지는 개체 처리 순서</h4><p>불러온 뒤 ECS의 개체 순서가 바뀌면 공유 난수를 쓰는 순서도 달라질 수 있습니다. 개체 처리 순서와 난수 사용을 함께 관리하고, 저장 직전의 판과 다시 연 판을 같은 시간만큼 진행해 비교합니다. 일부 장기 시험의 차이는 아직 추적 중입니다.</p></div>
+        <div class="detail"><span class="mono">NPC LIFE</span><h4>플레이어가 고용하지 않아도 살아가는 주민</h4><p>주민이 채집, 식사와 수면, 거래와 탐사를 스스로 선택하도록 만들고 있습니다. 전투를 피할지 맞설지도 성향에 따라 달라집니다. 시설을 지은 뒤에도 길이 통하고 먹을거리에 접근할 수 있는지까지 생활 AI의 검증 대상으로 봅니다.</p></div>
+      </div>
+
       <!-- 질서와 혼돈 -->
       <article class="proj flip">
         <div class="media">
@@ -431,8 +451,8 @@ dialog button{position:fixed;top:calc(16px + env(safe-area-inset-top,0px));right
           <h3>질서와 혼돈</h3>
           <p class="sub">AI 대전 카드 게임 · Unreal Engine 5</p>
           <div class="body">
-            <p>카드마다 안전한 질서(앞면)와 위험한 혼돈(뒷면) 중 골라 쓰는 규칙입니다. AI는 손패 가중치 합에 대한 비율로 낼 카드를 고르고, 드로우 확률도 같은 방식으로 정합니다.</p>
-            <p>운명·함정·축복 카드 효과를 데이터 테이블로 관리해 기획한 30종을 모두 구현했습니다.</p>
+            <p>카드의 앞면과 뒷면에 서로 다른 위험과 보상을 둔 AI 대전 카드 게임입니다. 상대 AI는 손패의 가중치를 확률로 바꿔 낼 카드를 고르고, 카드 드로우도 가중치로 조정합니다.</p>
+            <p>운명, 함정과 축복 효과를 데이터 테이블로 관리해 기획한 30종을 구현했습니다. 효과가 늘어날수록 카드별 예외 처리와 UI 설명이 함께 복잡해져, 효과의 공통 형식과 손패 배치 규칙을 정리하는 계기가 됐습니다.</p>
           </div>
           <div class="links"><a class="btn" href="https://www.youtube.com/watch?v=jTNiL-_LwIE" target="_blank" rel="noopener">시연 영상 ↗</a></div>
         </div>
@@ -456,9 +476,9 @@ dialog button{position:fixed;top:calc(16px + env(safe-area-inset-top,0px));right
           <h3>메시 작업실</h3>
           <p class="sub">2D 메시 리깅 편집기 · 자체 렌더러 · moc3 변환기 · Electron</p>
           <div class="body">
-            <p>Live2D 방식의 2D 리깅 편집기와 렌더러를 처음부터 구현하고 있습니다. PSD 레이어를 가져와 메시 정점·삼각형을 만들고, 회전·워프 디포머 계층에 연결한 뒤 파라미터 축별 키폼을 보간해 화면에 그립니다. 모션 타임라인, 진자 물리, 마스크·합성도 같은 문서 형식 안에서 편집합니다.</p>
-            <p>Electron 제작실에서 모델을 편집하고, 재생·Undo·저장이 같은 문서에 적용되게 만들었습니다. 지원 범위 안에서 moc3 · model3 · physics3 · motion3로 내보내는 변환기도 개발하고 있습니다. 자체 렌더와 변환 결과의 정점·삼각형 검사를 구분해 확인합니다.</p>
-            <p>현재는 머리카락 가림 순서와 각도별 변형, 표정 전환을 다듬고 있습니다. 편집기 기능 개발과 캐릭터 모델의 시각적 완성도는 따로 검수합니다.</p>
+            <p>분리한 캐릭터 그림을 불러와 메시와 움직임을 편집하는 Electron 도구입니다. 회전과 워프 계층에 파츠를 연결하고, 파라미터별 기준 모양 사이를 보간해 고개와 표정을 움직입니다. 타임라인과 물리도 같은 문서에서 다룹니다.</p>
+            <p>편집 화면의 변경, Undo와 저장이 같은 문서를 기준으로 동작하도록 구성했습니다. 지원 범위 안에서 moc3, model3, physics3와 motion3로 내보내는 변환기도 개발 중입니다.</p>
+            <p>현재 캐릭터는 머리카락의 가림 순서와 각도별 변형, 표정 전환을 보정하는 단계입니다. 편집기 기능 검증과 모델의 시각적 마감은 나눠 확인합니다.</p>
           </div>
           <div class="role"><b>내 역할</b>구조 설계 · 작업 분배 · 렌더·변환 결과 검수 (코드는 AI 협업)</div>
           <div class="nums">
@@ -470,11 +490,17 @@ dialog button{position:fixed;top:calc(16px + env(safe-area-inset-top,0px));right
         </div>
       </article>
 
+      <div class="details">
+        <div class="detail"><span class="mono">DOCUMENT</span><h4>문서를 교체하기 전에 변경 검증</h4><p>변경을 문서 사본에 적용해 형식을 검증한 뒤 현재 문서로 교체합니다. 적용 전 상태는 Undo에 남깁니다. 일부 값만 바뀐 상태를 화면이나 저장으로 넘기지 않도록 편집의 경계를 한곳에 뒀습니다.</p></div>
+        <div class="detail"><span class="mono">DEFORMATION</span><h4>레이어 순서와 움직임의 부모는 다른 관계</h4><p>뒷머리는 목 뒤에 그려져야 하지만 고개 회전은 따라가야 합니다. 그리기 순서와 변형을 물려받는 계층을 분리했습니다. 기준 자세의 변형 위에 머리카락과 장식의 흔들림을 더해 배치와 물리를 각각 조정합니다.</p></div>
+        <div class="detail"><span class="mono">EXPORT</span><h4>같은 자세에서 자체 렌더와 변환 결과 비교</h4><p>내보내기는 현재 지원하는 문서를 대상으로 자체 렌더와 변환 결과의 정점 위치를 비교합니다. 뒤집히거나 퇴화한 삼각형 검사도 별도로 둡니다. 모델별 지원 범위를 확인하고 변환 파일의 구조와 실제 모션의 가림·연결 상태를 각각 검사합니다.</p></div>
+      </div>
+
       <!-- 발헤임 라이브 서버 -->
       <article class="proj flip">
         <div class="media">
           <div class="panel">
-            <div><span class="mono">LIVE SERVICE · 2026.10–11</span><h4>장애는 기록으로 좁히고,<br>검증한 뒤에 반영한다</h4></div>
+            <div><span class="mono">LIVE SERVICE · 2026.10–11</span><h4>방송에 쓰는 서버의<br>기능 개발과 운영</h4></div>
             <ol>
               <li><b>01</b>신고 접수 → 로그·저장본·접속 시각 대조</li>
               <li><b>02</b>원인 범위를 좁혀 수정본을 격리 환경에서 검사</li>
@@ -487,55 +513,52 @@ dialog button{position:fixed;top:calc(16px + env(safe-area-inset-top,0px));right
           <h3>발헤임 스트리머 라이브 서버</h3>
           <p class="sub">데디케이티드 서버 · 자체 상점 · BepInEx 모드(C#) 수정 · 원격 운영 도구</p>
           <div class="body">
-            <p>스트리머들만 함께 플레이하는 합동 방송 서버를 한 달 동안 운영했습니다. 각자의 방송에 들어온 후원이 게임 안의 효과로 이어지고, 게임 골드로 사는 자체 상점과 투기장 같은 운영 기능을 직접 붙였습니다.</p>
-            <p>여러 방송이 동시에 송출되는 중이라 서버를 함부로 내릴 수 없었습니다. 문제가 생기면 먼저 기록으로 원인을 좁히고, 저장과 구매 기록을 지킨 채 고친 뒤 실제로 나아졌는지 다시 확인했습니다.</p>
+            <p>스트리머들이 함께 플레이하는 합동 방송 서버를 한 달 운영했습니다. 각 방송의 후원을 게임 효과와 연결하고, 게임 골드로 구매하는 자체 상점과 우편함, 투기장 운영 기능을 붙였습니다.</p>
+            <p>방송 중에는 서버를 마음대로 내리거나 보상을 다시 지급할 수 없었습니다. 오류가 난 시점의 로그와 구매 기록을 먼저 대조하고, 수정본을 별도 환경에서 검사한 뒤 적용했습니다. 모드 코드는 AI와 협업했으며 운영 규칙, 장애 조사와 적용 여부를 맡았습니다.</p>
           </div>
           <div class="role"><b>담당</b>서버 구축 · 상점·모드 기획과 수정 · 장애 대응 · 업데이트 검증 (모드 코드는 AI 협업)</div>
           <div class="nums">
             <div class="num"><b>1개월</b><span>라이브 운영</span></div>
-            <div class="num"><b>60</b><span>적용 전 격리·큐 검사</span></div>
+            <div class="num"><b>Lock</b><span>상점 동시 요청 관리</span></div>
             <div class="num"><b>455</b><span>구매 영수증 무손실 보존</span></div>
-            <div class="num"><b>24,888</b><span>종료 백업 SHA-256 일치</span></div>
+            <div class="num"><b>SHA-256</b><span>종료 백업 원본 대조</span></div>
           </div>
         </div>
       </article>
 
-      <h4 class="sub-h">직접 만든 것 · 고친 것</h4>
+      <h4 class="sub-h">운영 중 바꿀 수 있게 만든 기능</h4>
       <div class="details">
-        <div class="detail mine"><span class="mono">SHOP</span><h4>게임 골드 자체 상점</h4><p>F8로 여는 구매 전용 상점을 만들었습니다. 같은 상품이 서버 전체에서 팔릴수록 값이 오르고, 구매·사용이 생기면 관리자에게 알림이 갑니다. 관리자는 게임 채팅의 <code>/shop add · price · list</code>로 상품과 가격을 바꾸며, 가격을 바꿔도 구매 기록은 지워지지 않습니다.</p></div>
-        <div class="detail"><span class="mono">DONATION</span><h4>후원 효과와 우편함</h4><p>후원 금액대별로 음식, 몹 소환, 디버프, 이로운 효과, 스킬 변화가 적용됩니다. 효과마다 켜고 끄기, 금액, 몹 종류·수를 운영 중에 명령으로 바꿀 수 있게 했고, 보상은 F4 우편함으로 받습니다.</p></div>
-        <div class="detail"><span class="mono">OPS TOOLS</span><h4>운영 도구와 원격 관리</h4><p>투기장 대진 공지·전체 회복·칭호, 개인 습격과 보스 개인 완료 기록, 야생 몹·바닥 아이템 정리(미리보기 후 실행)를 추가했습니다. HTTPS 원격 에이전트로 정상 저장·종료와 로그 30일·월드 사본 7일 자동 보관을 돌렸습니다.</p></div>
-        <div class="detail"><span class="mono">MOD PATCH</span><h4>업데이트로 깨진 모드 고치기</h4><p>공식 서버가 1.0.17에서 1.0.20으로 올라가며 관리자 도구가 맞지 않게 되자, 제작 관련 호환 코드 두 곳을 고쳐 운영을 이어갔습니다. 0.5초마다 디스크에 강제로 쓰던 접속 상태 기록도 걷어냈습니다.</p></div>
+        <div class="detail mine"><span class="mono">SHOP</span><h4>상품 설정을 바꿔도 구매 기록은 유지</h4><p>F8 상점에서 같은 상품이 많이 팔리면 값이 오릅니다. 관리자는 게임 채팅의 <code>/shop add · price · list</code>로 상품과 가격을 조정합니다. 운영 설정을 바꾸는 일과 기존 구매 기록을 관리하는 일을 구분했습니다.</p></div>
+        <div class="detail"><span class="mono">DONATION</span><h4>후원 효과와 보상을 받는 경로 분리</h4><p>금액별 몹 소환이나 상태 효과는 운영 명령으로 조정하고, 아이템 보상은 F4 우편함에서 받도록 했습니다. 효과를 켜고 끄거나 금액 기준을 바꿀 때 서버를 다시 구성하지 않고 운영 규칙을 조정할 수 있게 했습니다.</p></div>
+        <div class="detail"><span class="mono">OPS TOOLS</span><h4>원격 작업도 실행 전에 범위 확인</h4><p>야생 몹과 바닥 아이템 정리는 미리보기 후 실행하도록 만들었습니다. HTTPS 운영 도구에서 정상 저장과 종료를 관리하고, 로그 30일과 월드 사본 7일을 보관했습니다. 정리 명령과 복구 자료를 함께 운영했습니다.</p></div>
       </div>
 
-      <h4 class="sub-h">장애 대응 사례</h4>
+      <h4 class="sub-h">운영 중 확인하고 고친 문제</h4>
       <div class="details">
-        <div class="detail inc"><span class="mono">CASE 01 · 상점</span><h4>상점 잠금 경합으로 인한 구매 지연</h4><dl><dt>현상</dt><dd>구매 요청이 몰릴 때 상점이 응답하지 않고 대기 상태가 길어짐</dd><dt>원인</dt><dd>게임 서버와 원격 에이전트가 같은 잠금을 각각 점유한 채 대기</dd><dt>해결</dt><dd>조회는 읽기 잠금을 공유하고, 결제·지급·환불만 단독 잠금으로 분리</dd><dt>결과</dt><dd>격리 검사 28건·요청 큐 검사 32건 통과 후 라이브 반영, 구매 영수증 455건 보존</dd></dl></div>
-        <div class="detail inc"><span class="mono">CASE 02 · 후원</span><h4>후원 효과 누락 및 중복 지급 위험</h4><dl><dt>현상</dt><dd>일부 후원이 게임 효과로 반영되지 않음</dd><dt>원인</dt><dd>방송 상태 조회 시간 초과, 미접속 상태의 후원 처리 기준 부재</dd><dt>해결</dt><dd>적용 조건을 방송 중·접속 중으로 정의하고 시간 초과를 보완, 본인 누락 확인 명령 추가</dd><dt>결과</dt><dd>누락분 재확인 경로를 마련하면서 중복 지급 방지 로직으로 재지급 오류를 차단</dd></dl></div>
-        <div class="detail inc"><span class="mono">CASE 03 · 네트워크</span><h4>보스전 중 보스 미표시 신고</h4><dl><dt>분석</dt><dd>같은 시각 로그에서 송신 중단, 연결 시간 초과, 재접속 순서를 확인</dd><dt>판단</dt><dd>연결 장애 가능성이 높으나 보스 생성 기록이 없어 원인을 단정하지 않음</dd><dt>검증</dt><dd>동일 오류가 최근 패치 이전에도 존재함을 확인해 패치 원인설을 배제</dd></dl></div>
-        <div class="detail inc"><span class="mono">CASE 04 · 데이터</span><h4>보관함 재화 감소 신고</h4><dl><dt>분석</dt><dd>월드 저장본, 보관함 인벤토리, 접속 시각을 시점별로 비교</dd><dt>판단</dt><dd>기록으로 확인 가능한 범위와 확정할 수 없는 범위를 구분해 보고</dd><dt>원칙</dt><dd>근거 없는 추정에 따른 보상이나 책임 지목을 하지 않음</dd></dl></div>
-        <div class="detail inc"><span class="mono">CASE 05 · 모니터링</span><h4>로그 급증의 장애 오판 방지</h4><dl><dt>분석</dt><dd>대량 로그가 접속자별 5초 주기 등록 기록임을 확인</dd><dt>판단</dt><dd>로그 양만으로 장애를 판정하지 않도록 정상 패턴을 정리</dd><dt>원칙</dt><dd>등록 기록은 후원 접속 확인에 쓰이므로 로그 축소 목적으로 제거하지 않음</dd></dl></div>
-        <div class="detail inc mine"><span class="mono">SAFE OPS</span><h4>무손실 배포·종료 절차</h4><dl><dt>배포 전</dt><dd>정상 저장 표식과 메모리 여유(75% 기준) 확인</dd><dt>배포 후</dt><dd>서버 준비, 플러그인 실패 0건, 상점 경고 0건 재확인</dd><dt>종료</dt><dd>저장 완료 후 서버 파일 24,888개·월드 파일 254개를 SHA-256으로 대조해 백업</dd></dl></div>
+        <div class="detail inc"><span class="mono">CONCURRENCY</span><h4>두 프로그램이 서로 기다리며 멈춘 상점</h4><dl><dt>원인</dt><dd>게임 서버와 원격 운영 도구가 각각 잠금을 점유한 채 상대 작업의 종료를 기다림</dd><dt>변경</dt><dd>조회는 읽기 잠금을 공유하고 결제, 지급과 환불은 단독으로 처리</dd><dt>확인</dt><dd>격리 검사 28건과 요청 큐 검사 32건을 거쳐 반영하고 구매 영수증 455건 보존 여부 대조</dd></dl></div>
+        <div class="detail inc"><span class="mono">DELIVERY</span><h4>누락된 후원을 다시 확인하되 중복 지급은 막기</h4><dl><dt>원인</dt><dd>방송 상태 조회 시간 초과와 미접속 상태의 처리 기준 부재</dd><dt>변경</dt><dd>방송 중·접속 중이라는 적용 조건을 정하고 누락 확인 명령 추가</dd><dt>확인</dt><dd>누락분을 다시 확인하는 경로와 중복 지급 방지 조건을 함께 점검</dd></dl></div>
+        <div class="detail inc mine"><span class="mono">DEPLOY · BACKUP</span><h4>복사해 둔 백업이 실제 원본과 같은지 확인</h4><dl><dt>적용 전</dt><dd>정상 저장 표식과 메모리 여유를 확인하고 수정본을 격리 검사</dd><dt>적용 후</dt><dd>서버 준비 상태와 플러그인, 상점 오류 기록을 확인</dd><dt>종료</dt><dd>저장 완료 후 서버 파일 24,888개와 월드 파일 254개를 SHA-256으로 대조해 백업 확인</dd></dl></div>
       </div>
+      <p class="media-note">서버가 1.0.17에서 1.0.20으로 바뀔 때는 제작 관련 모드 호환 코드 두 곳을 수정했습니다. 접속 상태를 0.5초마다 디스크에 강제로 기록하던 처리도 걷어냈습니다.</p>
     </div>
   </section>
 
   <section id="more">
     <div class="wrap">
       <div class="eyebrow mono">MORE WORK</div>
-      <h2 class="sec-title">작게 만들고, 같이 쓰는 것들</h2>
+      <h2 class="sec-title">도구와 수업 프로젝트</h2>
       <div class="grid3">
         <div class="mini">
           <div class="pic pix"><img class="dots" src="img/pet_walk.gif?v=2" data-w="40" data-h="68" width="160" height="272" alt="픽셀 미니펫 걷기 애니메이션"></div>
-          <div class="txt"><span class="meta mono">C++ · Win32 · Direct2D · AI 협업</span><h4>데스크톱 펫 · 픽셀 버전</h4><p>바탕화면과 다른 프로그램 창 위를 걷고, 매달리고, 벽을 타는 펫입니다. 투명 레이어드 창에 Direct2D로 그리고, 열린 창의 실제 테두리를 DWM에서 읽어 발판으로 씁니다. 행동은 상태 15개짜리 상태 머신이 돌리고, 포만감·행복도·활력이 다음 행동을 고릅니다.</p><p>픽셀 버전은 그리는 크기를 도트 캔버스의 정수배로 맞추고 최근접 보간으로 그려 도트가 번지지 않게 했습니다. 걷는 속도는 원화의 보폭에 맞췄고, 동작별 컷 수와 재생 시간은 시뮬레이션 테스트로 고정했습니다.</p></div>
+          <div class="txt"><span class="meta mono">C++ · Win32 · Direct2D · AI 협업</span><h4>데스크톱 펫 · 픽셀 버전</h4><p>열린 프로그램 창 위를 걷고 매달리는 Windows 펫입니다. DWM에서 창의 실제 테두리를 읽어 발판으로 삼고, 투명 레이어드 창에 Direct2D로 캐릭터를 그립니다. 행동은 15개 상태로 나눠 포만감과 활력 같은 값에 따라 전환합니다.</p><p>도트를 소수 배율로 늘리면 픽셀 굵기가 달라 보여 정수배 확대와 최근접 보간을 사용했습니다. 이동 속도와 걷기 원화의 보폭을 맞추고, 동작 전환 때 크기와 발 위치가 튀는지도 확인합니다.</p></div>
         </div>
         <div class="mini">
           <div class="pic"><img src="img/kbo_overlay.jpg" alt="KBO 중계 OBS 오버레이의 점수판, 이닝별 점수, 주자 상황판" loading="lazy"></div>
-          <div class="txt"><span class="meta mono">Node.js · React · Socket.IO · AI 협업</span><h4>KBO 중계 OBS 오버레이</h4><p>네이버 KBO 경기 데이터를 주기적으로 수집해 점수·이닝·볼카운트·주자·라인업을 OBS 방송 화면에 실시간으로 띄웁니다. JSON 수집이 실패하면 화면 크롤링 백업으로 자동 전환되고, EXE 하나로 실행됩니다.</p></div>
+          <div class="txt"><span class="meta mono">Node.js · React · Socket.IO · AI 협업</span><h4>KBO 중계 OBS 오버레이</h4><p>경기 진행에 맞춰 점수판을 자동으로 바꾸는 OBS 오버레이입니다. 네이버 KBO 데이터에서 점수, 이닝, 볼카운트와 주자, 라인업을 읽어 방송 화면에 표시합니다. JSON 수집이 실패할 때는 화면 크롤링 경로로 전환하도록 했고, EXE로 실행하게 묶었습니다.</p></div>
         </div>
         <div class="mini">
           <div class="pic"><img src="img/ar_scan.jpg" alt="HealthAR 실행 화면: 바코드 인식 후 무당 음료에는 초록 표시, 탄산음료에는 혈당 주의 경고와 각설탕 오브젝트가 쌓인 모습" loading="lazy"></div>
-          <div class="txt"><span class="meta mono">Unity · AR Foundation · C# · 수업 · AI 협업</span><h4>HealthAR</h4><p>성분표의 "당류 38g"은 얼마나 많은지 감이 오지 않는다는 문제에서 출발한 AR 앱입니다. 숫자를 읽게 하지 말고 눈에 보이게 하는 것이 목적이었습니다.</p><p>AR 카메라 프레임에서 ZXing으로 바코드를 읽어 제품 데이터를 찾고, 당류를 3g짜리 각설탕 개수로 바꿔 제품 앞에 물리로 떨어뜨려 쌓습니다. 카페인·대체당 같은 혈당 주의 성분과 알레르기는 빨간 경고로, 인증 정보는 배지로 띄웁니다.</p></div>
+          <div class="txt"><span class="meta mono">Unity · AR Foundation · C# · 수업 · AI 협업</span><h4>HealthAR</h4><p>성분표의 당류 수치를 제품 앞에 쌓이는 각설탕으로 표현한 AR 수업 프로젝트입니다. 예를 들어 당류 38g이라는 숫자를 보고 양을 가늠하기 어렵다는 점에서 출발했습니다.</p><p>AR 카메라 프레임에서 ZXing으로 바코드를 읽고 제품 데이터를 찾습니다. 당류를 3g짜리 각설탕 개수로 환산해 물리 오브젝트로 쌓고, 주의 성분과 알레르기 정보는 화면에 따로 표시했습니다.</p></div>
         </div>
       </div>
     </div>
@@ -545,7 +568,7 @@ dialog button{position:fixed;top:calc(16px + env(safe-area-inset-top,0px));right
     <div class="wrap">
       <div class="eyebrow mono">VIDEOS</div>
       <h2 class="sec-title">만들면서 부딪히고 배운 것</h2>
-      <p class="sec-lead">한국폴리텍대학 메타버스콘텐츠과 채널에 공개된 제 작업을 만든 순서대로 놓았습니다. 작품마다 막혔던 문제와 그 뒤로 바꾼 방식을 적었습니다.</p>
+      <p class="sec-lead">학과 채널에 공개된 초기 작품부터 순서대로 놓았습니다. 각 작품에서 맡았던 일과, 다음 작업에서 다르게 접근한 부분을 함께 적었습니다.</p>
       <div class="vlist">
         <article class="vrow">
           <a class="vthumb" href="https://www.youtube.com/watch?v=UGeSdOG6e98" target="_blank" rel="noopener"><img src="img/yt_UGeSdOG6e98.jpg" alt="1학기 기말 프로젝트 플레이 영상 썸네일" loading="lazy"><i aria-hidden="true">▶ 영상</i></a>
@@ -554,8 +577,8 @@ dialog button{position:fixed;top:calc(16px + env(safe-area-inset-top,0px));right
             <h4>1학기 기말 프로젝트</h4>
             <p class="vd">3인칭 슈터에 뱀서라이크(몰려오는 적을 버티며 성장)를 섞은 첫 Unreal 게임입니다.</p>
             <dl class="learn">
-              <dt>부딪힌 문제</dt><dd>처음이라 기능 구현에만 집중했습니다. 스킬과 스탯 구조가 만들다 보니 생각과 달라 여러 번 갈아엎었고, 그때마다 데이터와 설정이 흩어져 관리가 어려워졌습니다. 적이 늘수록 최적화가 안 됐고, 이펙트와 밸런스까지는 손대지 못했습니다.</dd>
-              <dt>바꾼 것</dt><dd>만들기 전에 데이터 구조와 성장 규칙부터 정합니다. 이후 작업에서는 수치를 데이터 테이블·Data Asset으로 떼어 내고, 많이 생성되는 대상은 처음부터 성능을 함께 고려합니다.</dd>
+              <dt>어려웠던 점</dt><dd>스킬과 스탯을 추가할 때마다 구조가 바뀌었고, 수치와 설정이 여러 곳에 흩어졌습니다. 적이 많아질 때의 처리 비용도 뒤늦게 문제가 됐습니다.</dd>
+              <dt>이후 작업</dt><dd>드로너에서는 기체 수치와 미션 조건을 Data Asset으로 분리했습니다. 동작 코드를 고치는 일과 밸런스 값을 바꾸는 일이 섞이지 않도록 하려는 선택입니다.</dd>
             </dl>
           </div>
         </article>
@@ -566,8 +589,8 @@ dialog button{position:fixed;top:calc(16px + env(safe-area-inset-top,0px));right
             <h4>질서와 혼돈</h4>
             <p class="vd">카드마다 질서(앞면)와 혼돈(뒷면) 중 골라 쓰는 AI 대전 카드 게임입니다.</p>
             <dl class="learn">
-              <dt>부딪힌 문제</dt><dd>특수 효과가 복잡해질수록 효과끼리 얽혀 구조가 쉽게 무너졌습니다. 언리얼 위젯(WBP)으로 2D 카드 UI를 만들면서, 손패가 한 장일 때부터 여러 장일 때까지 정해진 공간 안에 반응형으로 배치하는 일이 특히 까다로웠습니다.</dd>
-              <dt>바꾼 것</dt><dd>효과를 데이터 에셋으로 정리하려면 구조를 먼저 잘 짜야 한다는 걸 배웠습니다. 효과를 공통 형식으로 나눠 데이터로 관리해 기획한 30종을 모두 구현했습니다.</dd>
+              <dt>어려웠던 점</dt><dd>카드 효과가 서로 영향을 주면서 예외가 늘었습니다. 언리얼 위젯으로 손패를 배치할 때도 카드가 한 장일 때와 많을 때의 간격, 설명 길이를 함께 맞춰야 했습니다.</dd>
+              <dt>정리한 방식</dt><dd>효과를 공통 형식으로 정의해 데이터 테이블에서 읽도록 정리했습니다. 효과 코드만 보지 않고 카드에 표시되는 설명과 손패 배치도 같이 확인하게 된 작업입니다.</dd>
             </dl>
           </div>
         </article>
@@ -578,8 +601,8 @@ dialog button{position:fixed;top:calc(16px + env(safe-area-inset-top,0px));right
             <h4>캡스톤 경진대회 2조</h4>
             <p class="vd">2D 횡스크롤 보스 액션입니다.</p>
             <dl class="learn">
-              <dt>부딪힌 문제</dt><dd>여섯 명이 한 프로젝트를 만지면서 작업 범위와 결과물을 맞추는 일이 구현만큼 어려웠습니다. 3D 엔진에서 2D 횡스크롤을 만들다 보니 캡슐 충돌체가 미끄러지는 등 이동 감각을 잡기 힘들었습니다.</dd>
-              <dt>바꾼 것</dt><dd>팀 작업은 역할과 완료 기준을 먼저 맞춥니다. 엔진 기본 동작이 장르와 맞지 않으면 그 부분은 직접 제어해야 한다는 것도 배웠습니다.</dd>
+              <dt>어려웠던 점</dt><dd>여섯 명의 작업을 합치면서 담당 범위와 결과물을 맞춰야 했습니다. 3D 엔진으로 2D 횡스크롤을 만들 때는 캡슐 충돌체의 미끄러짐 때문에 생각한 이동 감각이 나오지 않았습니다.</dd>
+              <dt>남은 기준</dt><dd>화면을 2D처럼 보이게 하는 것과 이동·충돌이 2D 게임처럼 느껴지는 것은 달랐습니다. 이후에는 입력, 이동과 판정 조건을 먼저 확인하고 나서 콘텐츠를 붙이는 쪽으로 접근합니다.</dd>
             </dl>
           </div>
         </article>
@@ -590,27 +613,27 @@ dialog button{position:fixed;top:calc(16px + env(safe-area-inset-top,0px));right
             <h4>KATHARSIS</h4>
             <p class="vd">정신병원 탈출 심리공포입니다. 데스크톱판과 VR판을 만들었습니다.</p>
             <dl class="learn">
-              <dt>부딪힌 문제</dt><dd>저장·기록과 오브젝트 배치를 플레이어가 단서를 보고 자연스럽게 따라가게 짜는 것이 과제였습니다. 판마다 바뀌는 비밀번호는 정답 생성, 단서 표시, 입력 검사가 같은 데이터를 봐야 해서 관리가 까다로웠고, 시계 바늘로 비밀번호를 보여 줄 때 바늘 회전이 정답 시각과 맞지 않는 문제를 겪었습니다. VR판에서는 데스크톱 기준으로 만든 상호작용과 UI를 손 조작에 맞게 다시 만들어야 했고, 조작감을 맞추는 데 오래 걸렸습니다.</dd>
-              <dt>바꾼 것</dt><dd>정답 데이터는 한 곳에서 만들고 표시와 검사는 그 데이터를 읽게 해야 어긋나지 않습니다. 플랫폼이 바뀌면 입력과 UI는 처음부터 다시 설계합니다.</dd>
+              <dt>어려웠던 점</dt><dd>판마다 바뀌는 정답을 시계 바늘과 여러 단서에 일관되게 보여줘야 했습니다. 시계 표시가 실제 정답 시각과 어긋나는 문제를 겪었고, VR판에서는 손 조작에 맞춰 상호작용과 UI를 다시 다뤄야 했습니다.</dd>
+              <dt>정리한 방식</dt><dd>퍼즐 관리자가 정답을 만들고 각 단서와 키패드가 그 결과를 사용하도록 모았습니다. 표시 방식이 달라도 판단에 쓰는 원본 값은 같아야 한다는 기준이 생겼습니다.</dd>
             </dl>
           </div>
         </article>
       </div>
-      <p class="vnote">이때 직접 부딪힌 문제들이 지금 AI와 일할 때 먼저 정하는 기준이 됐습니다. 데이터 구조, 정답과 판정 기준, 플랫폼별 입력 방식은 AI에게 맡기기 전에 제가 정합니다.</p>
+      <p class="vnote">초기 작품에서 겪은 데이터와 입력 문제는 이후 프로젝트의 미션 구조와 퍼즐 관리 방식으로 이어졌습니다. 완성 화면뿐 아니라 다음 작업에서 무엇을 바꿨는지도 남겨 두고 있습니다.</p>
       <div class="links"><a class="btn" href="https://www.youtube.com/watch?v=6rpwWAMmJdI" target="_blank" rel="noopener">캡스톤 2조 제작 과정 ↗</a><a class="btn" href="https://www.youtube.com/watch?v=fLj8rgyWTPg" target="_blank" rel="noopener">KATHARSIS 플레이 영상 ↗</a></div>
     </div>
   </section>
 
   <section id="how">
     <div class="wrap">
-      <div class="eyebrow mono">HOW I WORK WITH AI</div>
-      <h2 class="sec-title">방향은 제가 잡고, 결과는 직접 확인합니다</h2>
-      <p class="sec-lead">AI에게 일을 통째로 맡기지 않습니다. 무엇을 만들지, 어떤 구조로 갈지, 어디까지 되면 끝인지는 직접 만들며 겪은 경험을 바탕으로 제가 정하고, AI에게는 그 기준 안에서 구현을 맡깁니다. AI는 그럴듯한 수정안을 빠르게 내지만 A를 고치다 B가 깨지는 일은 그대로 일어나므로, 결과는 미리 정한 방법으로 확인합니다.</p>
+      <div class="eyebrow mono">DESIGN &amp; VERIFICATION</div>
+      <h2 class="sec-title">기능을 붙일 때 함께 확인하는 것들</h2>
+      <p class="sec-lead">미션 하나를 추가해도 목표 데이터, 화면 표시와 저장 상태가 함께 바뀝니다. 값을 누가 관리하고 언제 초기화하는지 먼저 나누고, 변경한 함수가 입력부터 저장까지 어디에 연결되는지 따라가며 확인합니다.</p>
       <div class="flow">
-        <div class="step"><b>1</b><h4>방향 정하기</h4><p>기능의 구조와 데이터 형식, 완료 기준을 먼저 정합니다. 작업을 나누고, Claude·Codex와 구현·자료 조사·검토를 진행합니다.</p></div>
-        <div class="step"><b>2</b><h4>영향 범위 보기</h4><p>AI가 만든 변경에서 바뀐 함수가 어디서 불리는지, 저장·화면·네트워크까지 닿는지 확인합니다. C++ 코드는 직접 읽고 리뷰합니다.</p></div>
-        <div class="step"><b>3</b><h4>관련 검증 돌리기</h4><p>영향받는 기능의 회귀 테스트와 연결 검사를 골라 돌리고, 실제 실행 화면이나 영상으로 한 번 더 봅니다.</p></div>
-        <div class="step"><b>4</b><h4>승인 후 반영</h4><p>통과한 것만 원본을 백업한 뒤 반영합니다. 실패하면 원인을 붙여 다시 맡기고, 같은 검증을 반복합니다.</p></div>
+        <div class="step"><b>1</b><h4>값을 누가 갖고 있을지</h4><p>미션 조건은 Data Asset, 현재 진행은 Director처럼 정의와 실행 상태를 나눕니다. UI는 그 상태를 읽어 표시하도록 연결합니다.</p></div>
+        <div class="step"><b>2</b><h4>언제 지우고 언제 남길지</h4><p>기체 재출격과 미션 재시작은 초기화 범위가 다릅니다. 완료한 목표, 선택한 기체와 조작 설정이 각 경로에서 어떻게 이어지는지 확인합니다.</p></div>
+        <div class="step"><b>3</b><h4>문제를 다시 만들 조건</h4><p>시드뿐 아니라 생성 설정과 버전, 기체와 조작 모드도 구분합니다. 전후 비교에서 조건이 달라져 수정 효과를 잘못 판단하지 않도록 합니다.</p></div>
+        <div class="step"><b>4</b><h4>코드 검사와 실제 실행</h4><p>컴파일·자동검사와 화면 확인을 구분합니다. 아직 조작해 보지 못한 경로나 다른 PC의 검증은 완료로 묶지 않고 남은 항목에 적습니다.</p></div>
       </div>
       <h4 class="sub-h">프로젝트에서 고민하고 결정한 것들</h4>
       <div class="details">
@@ -629,7 +652,7 @@ dialog button{position:fixed;top:calc(16px + env(safe-area-inset-top,0px));right
       <div class="grid3">
         <div class="mini">
           <div class="pic"><img src="img/lifepaws.jpg" alt="LIFEPAWS 프로토타입 화면 세 장: 홈, AI 진단 결과, 제품 캘린더" loading="lazy"></div>
-          <div class="txt"><span class="meta mono">팀 작업 · UI/UX 프로토타입 · Figma Make · 2026</span><h4>LIFEPAWS · 반려동물 건강 앱</h4><p>비싸고 불투명한 진료비, 노령 반려동물 관리의 어려움에서 출발한 비대면 진료·관리 앱입니다. 사진으로 AI 1차 진단을 받고 바로 수의사 상담으로 넘어가는 흐름, 사료·영양제 바코드를 찍으면 급여 시작일과 유통기한이 캘린더에 들어가는 흐름을 담았습니다.</p><p>팀원과 함께 만들었고, 저는 기획을 보조하면서 메인 구현을 맡아 Figma Make로 화면 29개를 이어 실제로 눌러 보는 프로토타입을 만들었습니다.</p></div>
+          <div class="txt"><span class="meta mono">팀 작업 · UI/UX 프로토타입 · Figma Make · 2026</span><h4>LIFEPAWS · 반려동물 건강 앱</h4><p>반려동물의 사진 상담과 건강 기록, 사료·영양제 관리를 연결한 앱 프로토타입입니다. 진단 결과 화면에서 수의사 상담으로 이동하고, 바코드 등록 뒤 급여 시작일과 유통기한을 캘린더에 보여주는 흐름을 구성했습니다.</p><p>기획은 보조로 참여하고 프로토타입의 메인 구현을 맡았습니다. Figma Make로 29개 화면을 연결해 버튼을 눌러 이동하고 관리 흐름을 확인할 수 있게 만들었습니다.</p></div>
         </div>
         <div class="mini">
           <div class="pic" style="background:#fff"><img src="img/ci.jpg" alt="의정부도시교육재단 CI 공모전 출품 시안: 원 안의 U·Y 사람 형상과 펼친 책, 꽃과 잎" loading="lazy"></div>
@@ -648,7 +671,7 @@ dialog button{position:fixed;top:calc(16px + env(safe-area-inset-top,0px));right
       <div>
         <div class="eyebrow mono">CONTACT</div>
         <h2 class="sec-title">다음 게임을 같이 만들 팀을 찾습니다.</h2>
-        <p class="sec-lead">구현과 검증을 함께 책임지는 신입 클라이언트 개발자가 되겠습니다.</p>
+        <p class="sec-lead">Unreal C++ 게임 클라이언트 직무를 찾고 있습니다. 프로젝트의 구현 방식이나 담당 범위는 이메일로 더 자세히 설명드릴 수 있습니다.</p>
       </div>
       <div class="clist">
         <div class="citem"><span>이메일</span><a href="mailto:jkw6483@gmail.com">jkw6483@gmail.com</a></div>
